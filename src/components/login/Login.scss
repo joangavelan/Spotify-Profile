@@ -1,0 +1,27 @@
+@import '../../sass/variables';
+
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  height: 100vh;
+  text-align: center;
+
+  & img {
+    width: 20rem;
+  }
+
+  & a {
+    display: block;
+    padding: 1.3rem 2rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    background-color: $color-primary-dark;
+    letter-spacing: 1.5px;
+    color: white;
+    text-decoration: none;
+    border-radius: 50rem;
+    margin: 4rem 0;
+  }
+}
