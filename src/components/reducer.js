@@ -16,6 +16,11 @@ const reducer = (state, action) => {
         ...state, 
         token: action.token
       }
+    case ACTIONS.SET_USER:
+      return {
+        ...state,
+        user: action.user
+      }
   }
 }
 
