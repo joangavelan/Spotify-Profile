@@ -1,0 +1,33 @@
+@import '../../sass/variables';
+
+.sidePlaylists {
+  margin-left: 1.35rem;
+  margin-top: 2rem;
+
+  & > ul {
+    list-style-type: none;
+  }
+
+  & > h2 {
+    display: block;
+    margin-right: 1rem;
+    padding-bottom: 7px;
+    border-bottom: 1px solid #b3b3b346;
+    font-size: 1rem;
+    color: $color-gray-light;
+    letter-spacing: 1px;
+  }
+
+  & > ul > li > a {
+    display: block;
+    font-size: 1.2rem;
+    margin: 1.1rem 0;
+    text-decoration: none;
+    color: $color-gray-light;
+    cursor: initial;
+
+    &:hover {
+      color: white;
+    }
+  }
+}

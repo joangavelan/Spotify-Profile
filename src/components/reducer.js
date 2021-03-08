@@ -1,6 +1,7 @@
 export const ACTIONS = {
   SET_TOKEN: 'set-token',
-  SET_USER: 'set-user'
+  SET_USER: 'set-user',
+  SET_PLAYLISTS: 'set-playlists'
 }
 
 export const initialState = {
@@ -20,6 +21,11 @@ const reducer = (state, action) => {
       return {
         ...state,
         user: action.user
+      }
+    case ACTIONS.SET_PLAYLISTS:
+      return {
+        ...state,
+        playlists: action.playlists
       }
   }
 }

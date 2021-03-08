@@ -4,6 +4,7 @@ import { getTokenFromUrl } from './components/spotify'
 import SpotifyWebApi from 'spotify-web-api-js'
 import { useGlobalState } from './components/Provider'
 import { ACTIONS } from './components/reducer'
+import Profile from './components/profile/Profile'
 
 const spotifyApi = new SpotifyWebApi();
 
@@ -16,27 +17,26 @@ function App() {
     const _token = fullToken.access_token;
     //clean url
     // window.location.hash = "";
-
     if(_token) {
       //set token
       dispatch({type: ACTIONS.SET_TOKEN, token: _token})
-
+      //set access
       spotifyApi.setAccessToken(_token);
-      
       //set user
-      spotifyApi.getMe().then(user => {
-        dispatch({type: ACTIONS.SET_USER, user})
-      })
+      // spotifyApi.getMe().then(user => {dispatch({type: ACTIONS.SET_USER, user})})
+      //set playlists
+      // spotifyApi.getUserPlaylists().then(playlists => {dispatch({type: ACTIONS.SET_PLAYLISTS, playlists})})
+      //set top-tracks
+      // spotifyApi.getMyTopTracks().then(topTracks => console.log(topTracks))
+      //
+      // spotifyApi.getNewReleases().then(newReleases => console.log(newReleases))
     }
-
-
-    console.log(token, user)
 
   }, [])
 
   return (
     <div className="App">
-      <Login />
+      {token ? <Profile /> : <Login />}
     </div>
   );
 }

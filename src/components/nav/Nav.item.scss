@@ -1,0 +1,29 @@
+@import '../../sass/variables';
+
+.nav__item {
+  display: flex;
+  align-items: center;
+  padding: 8px 1.2rem;
+  border-radius: 4px;
+  color: $color-gray-light;
+  cursor: pointer;
+
+  &:hover {
+    color: white;
+  }
+
+  &-icon {
+    font-size: 1.6rem !important;
+    margin-right: 1.4rem;
+  }
+
+  & > h3 {
+    font-size: 1.1rem;
+    margin-top: 2px;
+  }
+
+  &--active {
+    background-color: $color-gray-dark;
+    color: white;
+  }
+}
