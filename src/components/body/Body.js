@@ -1,9 +1,15 @@
 import React from 'react'
 import './Body.scss'
+import { Route, Switch } from 'react-router-dom'
+import Playlist from '../playlist/Playlist'
+import Loader from '../loader/Loader'
 
 const Body = () => {
   return (
     <main className="body">
+      <Switch>
+        <Route path="/:playlist" component={Playlist}/>
+      </Switch>
     </main>
   )
 }

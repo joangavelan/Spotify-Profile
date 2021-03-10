@@ -27,6 +27,8 @@ const reducer = (state, action) => {
         ...state,
         playlists: action.playlists
       }
+    default: 
+      return state;
   }
 }
 

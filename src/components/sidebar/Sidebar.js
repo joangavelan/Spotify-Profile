@@ -3,7 +3,7 @@ import './Sidebar.scss'
 import Nav from '../nav/Nav'
 import SidePlaylists from '../playlists (sidebar)/SidePlaylists'
 
-const Sidebar = () => {
+const Sidebar = ({ spotify }) => {
   return (
     <aside className="sidebar">
       <img 
@@ -11,7 +11,7 @@ const Sidebar = () => {
         alt="spotify-logo" 
         className="sidebar__logo"/>
       <Nav />
-      <SidePlaylists />
+      <SidePlaylists spotify={spotify} />
     </aside>
   )
 }

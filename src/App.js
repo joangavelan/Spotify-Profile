@@ -1,16 +1,16 @@
 import { useEffect } from 'react';
 import Login from "./components/login/Login";
 import { getTokenFromUrl } from './components/spotify'
-import SpotifyWebApi from 'spotify-web-api-js'
 import { useGlobalState } from './components/Provider'
 import { ACTIONS } from './components/reducer'
 import Profile from './components/profile/Profile'
+import { BrowserRouter as Router } from "react-router-dom";
+import { spotifyApi } from './components/spotify'
 
-const spotifyApi = new SpotifyWebApi();
 
 function App() {
 
-  const [{token, user}, dispatch] = useGlobalState();
+  const [{token}, dispatch] = useGlobalState();
 
   useEffect(() => {
     const fullToken = getTokenFromUrl();
@@ -22,22 +22,21 @@ function App() {
       dispatch({type: ACTIONS.SET_TOKEN, token: _token})
       //set access
       spotifyApi.setAccessToken(_token);
-      //set user
-      // spotifyApi.getMe().then(user => {dispatch({type: ACTIONS.SET_USER, user})})
-      //set playlists
-      // spotifyApi.getUserPlaylists().then(playlists => {dispatch({type: ACTIONS.SET_PLAYLISTS, playlists})})
-      //set top-tracks
-      // spotifyApi.getMyTopTracks().then(topTracks => console.log(topTracks))
-      //
-      // spotifyApi.getNewReleases().then(newReleases => console.log(newReleases))
+      // set user
+      spotifyApi.getMe().then(user => {dispatch({type: ACTIONS.SET_USER, user})})
+      // set playlists
+      spotifyApi.getUserPlaylists().then(playlists => {dispatch({type: ACTIONS.SET_PLAYLISTS, playlists})})
     }
 
   }, [])
 
   return (
-    <div className="App">
-      {token ? <Profile /> : <Login />}
-    </div>
+    <Router>
+      <div className="App">
+        {token ? <Profile /> : <Login />}
+      </div>
+    </Router>
+    
   );
 }
 
