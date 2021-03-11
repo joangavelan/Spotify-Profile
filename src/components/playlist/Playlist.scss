@@ -1,3 +1,57 @@
+@import '../../sass/variables';
+
 .playlist {
   height: 100%;
+  background: linear-gradient(#38150E, #121212 80rem);
+  overflow-y: scroll;
+
+  &__header {
+    display: flex;
+    align-items: flex-end;
+    padding: 3rem 3rem;
+    padding-top: 8rem;
+  }
+
+  &__thumbnail {
+    width: 23.5rem;
+  }
+
+  &__details {
+    margin-left: 2.5rem;
+
+    & > h3 {
+      text-transform: uppercase;
+      margin-bottom: 4rem;
+    }
+
+    & > h2 {
+      font-size: 7rem;
+      font-weight: bold;
+      margin-bottom: 2rem;
+    }
+
+    & > p {
+      font-size: 1.4rem;
+    }
+  }
+
+  &__itemsContainer {
+    padding: 5rem 3rem;
+    background: linear-gradient(rgba(25, 9, 6, .45), rgb(18,18,18) 35%);
+  }
+
+  &__songs {
+    list-style-type: none;
+    margin: 5rem 0;
+  }
+
+  &__playerLink {
+    font-size: 1.7rem;
+    padding: 1.3rem 1.8rem;
+    border-radius: 3rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white;
+    background-color: $color-primary-dark;
+  }
 }
