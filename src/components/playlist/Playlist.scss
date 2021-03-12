@@ -78,6 +78,8 @@
       color: white;
     }
 
+    &-name,
+    &-artist,
     &-album {
       overflow: hidden;
       text-overflow: ellipsis;
@@ -86,7 +88,12 @@
 
     &:hover {
       background-color: #2A2A2A;
-      color: white;
+
+      .playlist__song-artist,
+      .playlist__song-album {
+        color: white;
+      }
+
     }
 
     &.selected {
