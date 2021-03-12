@@ -7,18 +7,20 @@ export function Body({playlist, selectedSong, setSelectedSong}) {
           className={`playlist__song ${selectedSong === index ? 'selected' : ''} grid-row`} 
           onClick={() => setSelectedSong(index)}>
           <div>{index+1}</div>
-          <div className="playlist__song-title">
-            <img 
-              className="playlist__song-thumbnail"
-              src={item.track.album.images[2].url} 
-              alt={item.track.name}/>
-            <div>
-              <p className="playlist__song-name">
-              {item.track.name}
-              </p>
-              <span className="playlist__song-artists">
-              {item.track.artists[0].name}
-            </span>
+          <div className="playlist__song-title-wrapper">
+            <div className="playlist__song-title">
+              <img 
+                className="playlist__song-thumbnail"
+                src={item.track.album.images[2].url} 
+                alt={item.track.name}/>
+              <div className="playlist__song-brand">
+                <p className="playlist__song-name">
+                {item.track.name}
+                </p>
+                <span className="playlist__song-artists">
+                {item.track.artists[0].name}
+                </span>
+              </div>
             </div>
           </div>
           <div><span className="playlist__song-album">{item.track.album.name}</span></div>

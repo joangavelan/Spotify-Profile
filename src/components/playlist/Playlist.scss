@@ -41,9 +41,8 @@
   }
 
   &__songs {
-    grid-column-gap: 1.5rem;
     width: 100%;
-    margin: 5rem 0;
+    margin: 3rem 0;
     font-size: 1.4rem;
     color: $color-gray-light;
 
@@ -51,6 +50,7 @@
       text-transform: uppercase;
       border-bottom: 1px solid #2a2a2abd;
       margin-bottom: 1.5rem;
+      height: 5rem;
 
       & .clockIcon {
         display: block;
@@ -64,6 +64,9 @@
 
     &-title {
       display: flex;
+      align-items: flex-end;
+      font-size: 1.45rem;
+      line-height: 1.6rem;
     }
 
     &-thumbnail {
@@ -72,8 +75,8 @@
     }
 
     &-name {
+      line-height: 2.4rem;
       color: white;
-      font-size: 1.45rem;
     }
 
     &-album {
@@ -103,10 +106,6 @@
     color: white;
     background-color: $color-primary-dark;
   }
-}
-
-.spacer {
-  padding: 7px;
 }
 
 .playlist::-webkit-scrollbar {
@@ -140,6 +139,7 @@
     display: flex;
     align-items: center;
     overflow: hidden;
+    height: 5.6rem;
   }
 
   & > div:first-child {
@@ -150,8 +150,4 @@
     justify-content: flex-end;
     margin-right: 1.5rem;
   }
-}
-
-.jc-center {
-  justify-content: center;
 }
