@@ -1,6 +1,4 @@
-import { millsToMinAndSec } from '../helpers'
-import { clockFormat } from '../helpers'
-import { getDayDiff } from '../helpers'
+import { getArtists, millsToMinAndSec, clockFormat, getDayDiff } from '../helpers'
 
 export function Body({playlist, selectedSong, setSelectedSong}) {
   return (
@@ -21,8 +19,8 @@ export function Body({playlist, selectedSong, setSelectedSong}) {
                 <p className="playlist__song-name">
                 {item.track.name}
                 </p>
-                <span className="playlist__song-artists">
-                {item.track.artists[0].name}
+                <span className="playlist__song-artist">
+                {getArtists(item.track.artists)}
                 </span>
               </div>
             </div>

@@ -24,6 +24,12 @@ export function getDayDiff(str_date) {
   const initial = new Date(str_date);
   const current = new Date(); 
   const timeDiff = current.getTime() - initial.getTime(); 
-  const diffInDays = Math.floor(timeDiff / (1000 * 3600 * 24)); 
+  const diffInDays = Math.round(timeDiff / (1000 * 3600 * 24)); 
   return diffInDays;
+}
+
+export function getArtists(artistsArr) {
+  const artist_names = [];
+  artistsArr.forEach(artist => artist_names.push(artist.name));
+  return artist_names.join(', ');
 }
