@@ -22,6 +22,7 @@ const Playlist = () => {
 
   const fetchPlaylist = async (id) => {
     const playlist = await spotifyApi.getPlaylist(id);
+    // console.log(playlist.tracks.items[2].track)
     setPlaylist(playlist);
   }
 

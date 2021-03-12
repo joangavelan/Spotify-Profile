@@ -1,22 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Head } from './Head'
+import { Body } from './Body'
 
 const Songs = ({ playlist }) => {
+
+  const [selectedSong, setSelectedSong] = useState(false);
+
   return (
-    <div className="playlist__itemsContainer">
+    <div className="playlist__songsContainer">
       <a className="playlist__playerLink" href="a" target="_blank">Play on spotify</a>
-        <ul className="playlist__songs">
-          {playlist.tracks.items.map(item => ( 
-            <li className="playlist__song" key={item.track.id}>
-              <div>
-                <p>{item.track.name}</p>
-                <span>{item.track.artists[0].name}</span>
-              </div>
-              <p>{item.track.album.name}</p>
-              <p>{item.added_at}</p>
-              <p>{item.track.duration_ms}</p>
-            </li>
-          ))}
-        </ul>
+        <div className="playlist__songs">
+          <Head />
+          <Body 
+            selectedSong={selectedSong} 
+            playlist={playlist} 
+            setSelectedSong={setSelectedSong}/>
+        </div>
     </div>
   )
 }
