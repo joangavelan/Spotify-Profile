@@ -36,7 +36,7 @@
   }
 
   &__songsContainer {
-    padding: 5rem 3rem;
+    padding: 3.5rem 3rem;
     background: linear-gradient(rgba(25, 9, 6, .5), rgb(18,18,18) 35%);
   }
 
@@ -50,14 +50,13 @@
       text-transform: uppercase;
       border-bottom: 1px solid #2a2a2abd;
       margin-bottom: 1.5rem;
-      height: 5rem;
+      height: 4.7rem;
 
       & .clockIcon {
         display: block;
         font-size: 1.7rem;
       }
     }
-
   }
 
   &__song {

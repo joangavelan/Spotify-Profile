@@ -1,3 +1,7 @@
+import { millsToMinAndSec } from '../helpers'
+import { clockFormat } from '../helpers'
+import { getDayDiff } from '../helpers'
+
 export function Body({playlist, selectedSong, setSelectedSong}) {
   return (
     <div className="playlist__songs-body">
@@ -24,8 +28,8 @@ export function Body({playlist, selectedSong, setSelectedSong}) {
             </div>
           </div>
           <div><span className="playlist__song-album">{item.track.album.name}</span></div>
-          <div><span>{item.added_at}</span></div>
-          <div><span>{item.track.duration_ms}</span></div>
+          <div><span>{`${getDayDiff(item.added_at)} days ago`}</span></div>
+          <div><span>{millsToMinAndSec(item.track.duration_ms, clockFormat)}</span></div>
         </div>
       ))}
     </div>
