@@ -1,0 +1,22 @@
+.grid-row {
+  display: grid;
+  grid-template-columns: .02fr 1.2fr .8fr .8fr .18fr;
+  grid-column-gap: 1.5rem;
+  padding: 0 1.5rem;
+
+  & > * {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    height: 5.8rem;
+  }
+
+  & > div:first-child {
+    justify-content: center;
+  }
+
+  & > div:last-child {
+    justify-content: flex-end;
+    margin-right: 1.5rem;
+  }
+}

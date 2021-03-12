@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Head } from './Head'
 import { Body } from './Body'
+import '../../sass/_layout.scss'
 
 const Songs = ({ playlist }) => {
 
