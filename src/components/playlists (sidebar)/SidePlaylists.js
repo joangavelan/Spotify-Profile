@@ -13,7 +13,7 @@ const SidePlaylists = () => {
       <ul>
         {playlists?.items?.map(playlist => (
           <li key={playlist.id}>
-            <Link to={{pathname: `/${playlist.name}`, id: playlist.id}}>
+            <Link to={{pathname: `/${playlist.name}`, playlist_id: playlist.id}}>
               {playlist.name}
             </Link>
           </li>

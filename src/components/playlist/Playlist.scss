@@ -42,6 +42,7 @@
 
   &__songs {
     width: 100%;
+    min-width: 70rem;
     margin: 3rem 0;
     font-size: 1.4rem;
     color: $color-gray-light;
@@ -66,10 +67,16 @@
       align-items: flex-end;
       font-size: 1.45rem;
       line-height: 1.6rem;
+      overflow: hidden;
+    }
+
+    &-brand {
+      overflow: hidden;
     }
 
     &-thumbnail {
       width: 4rem;
+      height: 4rem;
       margin-right: 1.5rem;
     }
 

@@ -1,13 +1,33 @@
+import React, { useRef, useEffect } from 'react'
 import { getArtists, millsToMinAndSec, clockFormat, getDayDiff } from '../helpers'
 
-export function Body({playlist, selectedSong, setSelectedSong}) {
+export function Body({playlist, handleSongClick, clickedSongIndex, setClickedSongIndex, setClickedSongUrl}) {
+
+  function useOutsideAlerter(ref) {
+    useEffect(() => {
+      function handleClickOutside(event) {
+        if (ref.current && !ref.current.contains(event.target)) {
+          setClickedSongIndex(false);
+          setClickedSongUrl('');
+        }
+      }
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [ref]);
+  }
+
+  const playlistSongsRef = useRef();
+  useOutsideAlerter(playlistSongsRef)
+
   return (
-    <div className="playlist__songs-body">
+    <div className="playlist__songs-body" ref={playlistSongsRef}>
       {playlist.tracks.items.map((item, index) => ( 
         <div 
           key={item.track.id}
-          className={`playlist__song ${selectedSong === index ? 'selected' : ''} grid-row`} 
-          onClick={() => setSelectedSong(index)}>
+          className={`playlist__song grid-row ${clickedSongIndex === index ? 'selected' : ''} `} 
+          onClick={() => handleSongClick(index, item.track.external_urls.spotify)}>
           <div>{index+1}</div>
           <div className="playlist__song-title-wrapper">
             <div className="playlist__song-title">
@@ -19,9 +39,9 @@ export function Body({playlist, selectedSong, setSelectedSong}) {
                 <p className="playlist__song-name">
                 {item.track.name}
                 </p>
-                <span className="playlist__song-artist">
+                <p className="playlist__song-artist">
                 {getArtists(item.track.artists)}
-                </span>
+                </p>
               </div>
             </div>
           </div>

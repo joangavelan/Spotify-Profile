@@ -11,7 +11,7 @@ const Playlist = () => {
   const [playlist, setPlaylist] = useState('');
 
   const location = useLocation();
-  const playlistId = location.id;
+  const playlistId = location.playlist_id;
 
   useEffect(() => {
     
@@ -22,7 +22,7 @@ const Playlist = () => {
 
   const fetchPlaylist = async (id) => {
     const playlist = await spotifyApi.getPlaylist(id);
-    console.log(playlist.tracks.items[2])
+    // console.log(playlist.tracks.items[2])
     setPlaylist(playlist);
   }
 
