@@ -13,9 +13,15 @@ const Songs = ({ playlist }) => {
     setClickedSongUrl(songUrl);
   }
 
+  const handleAnchorTag = (e) => {
+    if(!clickedSongUrl) e.preventDefault();
+  }
+
   return (
     <div className="playlist__songsContainer">
       <a className="playlist__playerLink" 
+         onClick={handleAnchorTag}
+         style={{backgroundColor: clickedSongUrl ? '#1DB954' : '#00a73b'}}
          href={clickedSongUrl} 
          target="_blank">
            Play on spotify

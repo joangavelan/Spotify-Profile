@@ -6,7 +6,7 @@ export function Body({playlist, handleSongClick, clickedSongIndex, setClickedSon
   function useOutsideAlerter(ref) {
     useEffect(() => {
       function handleClickOutside(event) {
-        if (ref.current && !ref.current.contains(event.target)) {
+        if(ref.current && !ref.current.contains(event.target) && !event.target.matches('.playlist__playerLink')) {
           setClickedSongIndex(false);
           setClickedSongUrl('');
         }
@@ -19,7 +19,7 @@ export function Body({playlist, handleSongClick, clickedSongIndex, setClickedSon
   }
 
   const playlistSongsRef = useRef();
-  useOutsideAlerter(playlistSongsRef)
+  useOutsideAlerter(playlistSongsRef);
 
   return (
     <div className="playlist__songs-body" ref={playlistSongsRef}>
@@ -33,7 +33,7 @@ export function Body({playlist, handleSongClick, clickedSongIndex, setClickedSon
             <div className="playlist__song-title">
               <img 
                 className="playlist__song-thumbnail"
-                src={item.track.album.images[2].url} 
+                src={item.track.album?.images[2]?.url} 
                 alt={item.track.name}/>
               <div className="playlist__song-brand">
                 <p className="playlist__song-name">

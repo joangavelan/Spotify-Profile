@@ -13,7 +13,24 @@
   }
 
   &__thumbnail {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 23.5rem;
+    height: 23.5rem;
+    border-radius: 1px;
+    background-color: #282828;
+    box-shadow: 0 4px 6rem rgba(17,17,17,5);
+    overflow: hidden;
+
+    & > img {
+      width: 100%;
+    }
+    
+    & > svg {
+      font-size: 7rem;
+      color: #7F7F7F;
+    }
   }
 
   &__details {
@@ -38,6 +55,7 @@
   &__songsContainer {
     padding: 3.5rem 3rem;
     background: linear-gradient(rgba(25, 9, 6, .5), rgb(18,18,18) 35%);
+    min-height: calc(100vh - 34.5rem);
   }
 
   &__songs {
@@ -117,7 +135,7 @@
     text-transform: uppercase;
     text-decoration: none;
     color: white;
-    background-color: $color-primary-dark;
+    // background-color: $color-primary-dark;
   }
 }
 
