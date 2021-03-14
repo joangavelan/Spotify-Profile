@@ -1,6 +1,6 @@
 import React from 'react'
 import { AiOutlineCloseCircle } from 'react-icons/ai'
-import './Warning.scss'
+import './Utilities.scss'
 
 const Warning = () => {
   return (

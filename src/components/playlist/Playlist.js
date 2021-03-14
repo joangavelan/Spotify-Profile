@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom'
 import Loader from '../loader/Loader'
 import './Playlist.scss'
 import Header from './Header'
-import Songs from './Songs'
+import Tracks from './Tracks'
 
 const Playlist = () => {
 
@@ -31,7 +31,7 @@ const Playlist = () => {
       {playlist ?
       <>
         <Header playlist={playlist} />
-        <Songs playlist={playlist} />
+        <Tracks playlist={playlist} />
       </>
       : <Loader />
       }

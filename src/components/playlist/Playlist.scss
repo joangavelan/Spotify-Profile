@@ -52,13 +52,14 @@
     }
   }
 
-  &__songsContainer {
+  &__tracksContainer {
+    position: relative;
     padding: 3.5rem 3rem;
     background: linear-gradient(rgba(25, 9, 6, .5), rgb(18,18,18) 35%);
     min-height: calc(100vh - 34.5rem);
   }
 
-  &__songs {
+  &__tracks {
     width: 100%;
     min-width: 70rem;
     margin: 3rem 0;
@@ -78,7 +79,7 @@
     }
   }
 
-  &__song {
+  &__track {
 
     &-title {
       display: flex;

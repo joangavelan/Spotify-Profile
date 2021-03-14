@@ -1,3 +1,6 @@
+@import '../../sass/variables';
+
+//warning
 .warning {
   position: absolute;
   top: 50%;
@@ -15,5 +18,18 @@
 
   & > svg {
     font-size: 5rem;
+  }
+}
+
+//heading
+.heading {
+  
+  & > h2 {
+    font-size: 2.4rem;
+  }
+
+  & > p {
+    font-size: 1.4rem;
+    color: $color-gray-light;
   }
 }

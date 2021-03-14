@@ -6,7 +6,6 @@ import { RiMusicLine } from 'react-icons/ri'
 
 const Header = ({playlist}) => {
 
-  console.log(playlist)
   const playlistDurationInMills = getPlaylistDuration(playlist.tracks.items);
   const playlistDuration = millsToMinAndSec(playlistDurationInMills, minSecFormat);
 
