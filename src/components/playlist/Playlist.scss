@@ -59,7 +59,8 @@
     min-height: calc(100vh - 34.5rem);
   }
 
-  &__tracks {
+  &__tracks,
+  &__recommended-tracks {
     width: 100%;
     min-width: 70rem;
     margin: 3rem 0;
@@ -77,6 +78,10 @@
         font-size: 1.7rem;
       }
     }
+  }
+
+  &__recommended-tracks {
+    margin-top: 7.5rem;
   }
 
   &__track {
@@ -112,14 +117,35 @@
       white-space: nowrap;
     }
 
+    &-add {
+      font-size: 1.3rem;
+      font-weight: bold;
+      max-width: 13rem;
+      padding: 1rem 4rem;
+      color: white;
+      background: transparent;
+      text-transform: uppercase;
+      border: 1px solid #535353;
+      outline: none;
+      border-radius: 2rem;
+      cursor: pointer;
+
+      &:hover {
+        transform: scale(1.06);
+      }
+    }
+
     &:hover {
       background-color: #2A2A2A;
 
-      .playlist__song-artist,
-      .playlist__song-album {
+      .playlist__track-artist,
+      .playlist__track-album {
         color: white;
       }
 
+      .playlist__track-add {
+        border-color: $color-gray-light;
+      }
     }
 
     &.selected {

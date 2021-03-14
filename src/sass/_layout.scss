@@ -7,8 +7,8 @@
   & > * {
     display: flex;
     align-items: center;
-    overflow: hidden;
     height: 5.6rem;
+    overflow: hidden;
   }
 
   & > div:first-child {
@@ -18,5 +18,18 @@
   & > div:last-child {
     justify-content: flex-end;
     margin-right: 1.5rem;
+  }
+}
+
+.col-3 {
+  grid-template-columns: 2.2fr 1.4fr .4fr;
+
+  & > div:first-child {
+    justify-content: left;
+  }
+
+  & > div:last-child {
+    margin-right: 0;
+    overflow: visible;
   }
 }

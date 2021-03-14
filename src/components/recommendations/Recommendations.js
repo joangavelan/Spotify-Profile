@@ -9,21 +9,44 @@ const Recommendations = ({ playlist }) => {
 
   // console.log(playlist)
 
-  const obj = {
-    seed_artist: playlist.tracks.items[0].track.artists[0].id,
+  const seed_artists = [];
+  const seed_tracks = [];
+
+  const items = playlist.tracks.items;
+  console.log(items[0].track.id)
+
+  // if(items) {
+  //   const max = items.length >= 5 ? 5 : items.length;
+
+  //   for(let i = 0; i < 2 ; i++) {
+  //     let trackId = items[i].track.id;
+  //     let trackMainArtistId = items[i].track.artists[0].id;
+  //     if(trackMainArtistId) seed_artists.push(trackMainArtistId);
+  //     if(trackId) seed_tracks.push(trackId);
+  //   }
+  // }
+
+  // console.log(seed_artists.join(', '))
+  // console.log(seed_tracks.join(', '))
+
+  const seeds = {
+    seed_tracks: items[0].track.id,
     seed_genres: playlist.name,
-    seed_tracks: playlist.tracks.items[0].track.id,
+    seed_artists: items[0].track.artists[0].id,
+    limit: 10
   }
+
+  console.log(seeds)
 
   // spotifyApi.getAvailableGenreSeeds().then(seeds => console.log(seeds));
 
   useEffect(() => {
-    fetchRecommendations(obj);
+    fetchRecommendations(seeds);
   }, [])
 
   const fetchRecommendations = async (obj) => {
     const recommendations = await spotifyApi.getRecommendations(obj);
-    console.log(recommendations)
+    // console.log(recommendations)
     setRecommendations(recommendations)
   }
 
@@ -35,16 +58,18 @@ const Recommendations = ({ playlist }) => {
         {recommendations?.tracks?.map(track => (
           <div 
           key={track.id}
-          className="playlist__recommended-track playlist__track grid-row-3">
-            <img 
-              src={track.album?.images[2]?.url}
-              className="playlist__track-thumbnail"/>
-            <div>
-              <p>{track.name}</p>
-              <p>{getArtists(track.artists)}</p>
+          className="playlist__track grid-row col-3">
+            <div className="playlist__track-title">
+              <img 
+                src={track.album?.images[2]?.url}
+                className="playlist__track-thumbnail"/>
+              <div className="playlist__track-brand">
+                <p className="playlist__track-name">{track.name}</p>
+                <p className="playlist__track-artist">{getArtists(track.artists)}</p>
+              </div>
             </div>
-            <p>{track.name}</p>
-            <button>Añadir</button>
+            <div><p className="playlist__track-album">{track.name}</p></div>
+            <div><button className="playlist__track-add">Add</button></div>
           </div>
         ))}
       </div>
@@ -53,4 +78,4 @@ const Recommendations = ({ playlist }) => {
   )
 }
 
-export default Recommendations  
+export default Recommendations
