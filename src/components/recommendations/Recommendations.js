@@ -1,9 +1,9 @@
 import React, { useState, useEffect} from 'react'
 import { spotifyApi } from '../spotify'
 import Heading from '../utilities/Heading';
-import { getArtists } from '../helpers'
 import { useGlobalState } from '../Provider'
 import { ACTIONS } from '../reducer' 
+import Track from './RecommendedTrack'
 
 const Recommendations = ({ playlist }) => {
 
@@ -41,21 +41,10 @@ const Recommendations = ({ playlist }) => {
       <div className="playlist__recommended-tracks">
         <Heading playlistName={playlist.name}/>
         {recommendations?.tracks?.map(track => (
-          <div 
-          key={track.id}
-          className="playlist__track grid-row col-3">
-            <div className="playlist__track-title">
-              <img 
-                src={track.album?.images[2]?.url}
-                className="playlist__track-thumbnail"/>
-              <div className="playlist__track-brand">
-                <p className="playlist__track-name">{track.name}</p>
-                <p className="playlist__track-artist">{getArtists(track.artists)}</p>
-              </div>
-            </div>
-            <div><p className="playlist__track-album">{track.name}</p></div>
-            <div><button onClick={() => addTrackToPlaylist(track.uri)} className="playlist__track-add">Add</button></div>
-          </div>
+          <Track 
+            key={track.id} 
+            track={track}
+            addTrackToPlaylist={addTrackToPlaylist}/>
         ))}
       </div>
       }

@@ -1,6 +1,6 @@
 import { AiOutlineClockCircle } from 'react-icons/ai'
 
-export function Head() {
+const Head = () => {
   return (
     <div className="playlist__tracks-head grid-row">
       <div>&#x23;</div>
@@ -12,3 +12,5 @@ export function Head() {
         
   );
 }
+
+export default Head

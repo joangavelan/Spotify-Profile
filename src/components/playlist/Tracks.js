@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { Head } from './Head'
-import { Body } from './Body'
+import Head from './Head'
+import Body from './Body'
 import '../../sass/_layout.scss'
 import Recommendations from '../recommendations/Recommendations'
 import Warning from '../utilities/Warning'
