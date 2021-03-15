@@ -5,7 +5,7 @@ import './Utilities.scss'
 const Warning = () => {
   return (
     <div className="warning">
-      <p>You haven't added any songs yet</p>
+      <p>You haven't added any tracks to this playlist yet</p>
       <AiOutlineCloseCircle />
     </div>
   )
