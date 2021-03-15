@@ -1,5 +1,6 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import { getArtists, millsToMinAndSec, clockFormat, getDayDiff } from '../helpers'
+import { AiOutlineDelete } from 'react-icons/ai'
 
 export function Body({playlist, handleTrackClick, clickedTrackIndex, setClickedTrackIndex, setClickedTrackUrl}) {
 
@@ -47,7 +48,10 @@ export function Body({playlist, handleTrackClick, clickedTrackIndex, setClickedT
           </div>
           <div><span className="playlist__track-album">{item.track.album.name}</span></div>
           <div><span>{`${getDayDiff(item.added_at)} days ago`}</span></div>
-          <div><span>{millsToMinAndSec(item.track.duration_ms, clockFormat)}</span></div>
+          <div>
+            <AiOutlineDelete className="playlist__delete-icon"/>
+            <span>{millsToMinAndSec(item.track.duration_ms, clockFormat)}</span>
+          </div>
         </div>
       ))}
     </div>

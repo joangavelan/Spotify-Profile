@@ -135,7 +135,8 @@
       }
     }
 
-    &:hover {
+    &:hover,
+    &.selected {
       background-color: #2A2A2A;
 
       .playlist__track-artist,
@@ -146,13 +147,25 @@
       .playlist__track-add {
         border-color: $color-gray-light;
       }
+
+      .playlist__delete-icon {
+        opacity: 1;
+      }
     }
 
     &.selected {
       background-color: #595856;
-      color: white;
     }
-  } 
+  }
+  
+  &__delete-icon {
+    opacity: 0;
+    position: absolute;
+    left: 1.3rem;
+    bottom: 2.15rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
 
   &__playerLink {
     display: inline-block;
