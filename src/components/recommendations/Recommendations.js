@@ -7,14 +7,8 @@ const Recommendations = ({ playlist }) => {
 
   const [recommendations, setRecommendations] = useState([]);
 
-  // console.log(playlist)
-
-  const seed_artists = [];
-  const seed_tracks = [];
-
   const items = playlist.tracks.items;
-  console.log(items[0].track.id)
-
+  
   // if(items) {
   //   const max = items.length >= 5 ? 5 : items.length;
 
@@ -35,8 +29,6 @@ const Recommendations = ({ playlist }) => {
     seed_artists: items[0].track.artists[0].id,
     limit: 10
   }
-
-  console.log(seeds)
 
   // spotifyApi.getAvailableGenreSeeds().then(seeds => console.log(seeds));
 
