@@ -1,13 +1,15 @@
 export const ACTIONS = {
   SET_TOKEN: 'set-token',
   SET_USER: 'set-user',
-  SET_PLAYLISTS: 'set-playlists'
+  SET_PLAYLISTS: 'set-playlists',
+  SET_UPDATE: 'set-update'
 }
 
 export const initialState = {
   token: '',
   user: '',
-  playlists: []
+  playlists: [],
+  update: 0
 }
 
 const reducer = (state, action) => {
@@ -26,6 +28,11 @@ const reducer = (state, action) => {
       return {
         ...state,
         playlists: action.playlists
+      }
+    case ACTIONS.SET_UPDATE:
+      return {
+        ...state,
+        update: state.update + 1
       }
     default: 
       return state;
