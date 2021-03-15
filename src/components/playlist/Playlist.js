@@ -21,7 +21,6 @@ const Playlist = () => {
   }, [playlistId])
 
   useEffect(() => {
-    console.log(update)
     const id = setTimeout(() => {
       fetchPlaylist(playlistId);
     }, 500);
@@ -30,9 +29,6 @@ const Playlist = () => {
 
   const fetchPlaylist = async (id) => {
     const playlistFetch = await spotifyApi.getPlaylist(id);
-    // const last = playlistFetch?.tracks?.items.length - 1;
-    // console.log(playlistFetch?.tracks?.items[last].track.name);
-    // console.log(playlistFetch.tracks.items[2])
     setPlaylist(playlistFetch);
   }
 
