@@ -1,9 +1,14 @@
 import React, { useRef, useEffect } from 'react'
 import Track from './Track';
+import { spotifyApi }  from '../spotify'
+import { ACTIONS } from '../reducer'
+import { useGlobalState } from '../Provider'
 
 const Body = ({playlist, handleTrackClick, clickedTrackIndex, setClickedTrackIndex, setClickedTrackUrl}) => {
 
-  function useOutsideAlerter(ref) {
+  const [{}, dispatch] = useGlobalState();
+
+  const useOutsideAlerter = (ref) => {
     useEffect(() => {
       function handleClickOutside(event) {
         if(ref.current && !ref.current.contains(event.target) && !event.target.matches('.playlist__playerLink')) {
@@ -21,6 +26,12 @@ const Body = ({playlist, handleTrackClick, clickedTrackIndex, setClickedTrackInd
   const playlistTracksRef = useRef();
   useOutsideAlerter(playlistTracksRef);
 
+  const removeTrackFromPlaylist = (uri) => {
+    const uris = [uri];
+    spotifyApi.removeTracksFromPlaylist(playlist.id, uris);
+    dispatch({type: ACTIONS.SET_UPDATE})
+  }
+
   return (
     <div className="playlist__tracks-body" ref={playlistTracksRef}>
       {playlist.tracks.items.map((item, index) => ( 
@@ -29,7 +40,8 @@ const Body = ({playlist, handleTrackClick, clickedTrackIndex, setClickedTrackInd
           item={item}
           index={index}
           clickedTrackIndex={clickedTrackIndex}
-          handleTrackClick={handleTrackClick}/>
+          handleTrackClick={handleTrackClick}
+          removeTrack={removeTrackFromPlaylist}/>
       ))}
     </div>
   )

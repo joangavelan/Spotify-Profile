@@ -2,7 +2,7 @@ import React from 'react'
 import { getArtists, millsToMinAndSec, clockFormat, getDayDiff } from '../helpers'
 import { AiOutlineDelete } from 'react-icons/ai'
 
-const Track = ({item, index, clickedTrackIndex, handleTrackClick}) => {
+const Track = ({item, index, clickedTrackIndex, handleTrackClick, removeTrack}) => {
   return (
     <div 
       className={`playlist__track grid-row ${clickedTrackIndex === index ? 'selected' : ''} `} 
@@ -27,7 +27,9 @@ const Track = ({item, index, clickedTrackIndex, handleTrackClick}) => {
       <div><span className="playlist__track-album">{item.track.album.name}</span></div>
       <div><span>{`${getDayDiff(item.added_at)} days ago`}</span></div>
       <div>
-        <AiOutlineDelete className="playlist__delete-icon"/>
+        <AiOutlineDelete 
+          className="playlist__delete-icon" 
+          onClick={() => removeTrack(item.track.uri)}/>
         <span>{millsToMinAndSec(item.track.duration_ms, clockFormat)}</span>
       </div>
     </div>
