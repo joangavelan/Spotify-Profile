@@ -44,16 +44,18 @@ const Recommendations = ({ playlist, recommendedTracksRef}) => {
   return (
     <>
       {recommendations.tracks && 
-      <div className="playlist__recommended-tracks" ref={recommendedTracksRef}>
+      <div className="playlist__recommendations">
         <Heading playlistName={playlist.name}/>
-        {recommendations?.tracks?.map((track, index) => (
-          <Track 
-            key={track.id} 
-            track={track}
-            index={index}
-            handleTrackClick={handleRecommendedTrackClick}
-            addTrackToPlaylist={addTrackToPlaylist}/>
-        ))}
+        <div className="playlist__recommended-tracks" ref={recommendedTracksRef}>
+          {recommendations?.tracks?.map((track, index) => (
+            <Track 
+              key={track.id} 
+              track={track}
+              index={index}
+              handleTrackClick={handleRecommendedTrackClick}
+              addTrackToPlaylist={addTrackToPlaylist}/>
+          ))}
+        </div>
       </div>
       }
     </>
