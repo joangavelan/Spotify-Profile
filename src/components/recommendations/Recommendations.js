@@ -4,7 +4,6 @@ import Heading from '../utilities/Heading';
 import { useGlobalState } from '../Provider'
 import { ACTIONS } from '../reducer' 
 import Track from './RecommendedTrack'
-import { useOutsideAlerter } from '../helpers'
 
 const Recommendations = ({ playlist, recommendedTracksRef}) => {
 

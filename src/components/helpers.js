@@ -1,6 +1,3 @@
-import { useEffect } from 'react';
-import { ACTIONS } from './reducer'
-
 export function getPlaylistDuration (playlistItems) {
   let total = 0;
   playlistItems.forEach(item => {
