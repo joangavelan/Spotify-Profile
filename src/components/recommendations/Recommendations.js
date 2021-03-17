@@ -1,11 +1,12 @@
-import React, { useState, useEffect} from 'react'
+import React, { useState, useEffect, useRef} from 'react'
 import { spotifyApi } from '../spotify'
 import Heading from '../utilities/Heading';
 import { useGlobalState } from '../Provider'
 import { ACTIONS } from '../reducer' 
 import Track from './RecommendedTrack'
+import { useOutsideAlerter } from '../helpers'
 
-const Recommendations = ({ playlist }) => {
+const Recommendations = ({ playlist, recommendedTracksRef}) => {
 
   const [recommendations, setRecommendations] = useState([]);
   const [{}, dispatch] = useGlobalState();
@@ -25,25 +26,32 @@ const Recommendations = ({ playlist }) => {
 
   const fetchRecommendations = async (obj) => {
     const recommendations = await spotifyApi.getRecommendations(obj);
-    // console.log(recommendations)
-    setRecommendations(recommendations)
+    setRecommendations(recommendations);
   }
 
   const addTrackToPlaylist = (uri) => {
     const uris = [uri];
     spotifyApi.addTracksToPlaylist(playlist.id, uris);
-    dispatch({type: ACTIONS.SET_UPDATE})
+    dispatch({type: ACTIONS.SET_UPDATE});
+  }
+
+  const handleRecommendedTrackClick = (url, index) => {
+    dispatch({type: ACTIONS.SET_SELECTED_TRACK_URL, url});
+    dispatch({type: ACTIONS.SET_SELECTED_TRACK_INDEX, index});
+    dispatch({type: ACTIONS.SET_SELECTED_TRACK_FIELD, field: 'recommended'});
   }
 
   return (
     <>
       {recommendations.tracks && 
-      <div className="playlist__recommended-tracks">
+      <div className="playlist__recommended-tracks" ref={recommendedTracksRef}>
         <Heading playlistName={playlist.name}/>
-        {recommendations?.tracks?.map(track => (
+        {recommendations?.tracks?.map((track, index) => (
           <Track 
             key={track.id} 
             track={track}
+            index={index}
+            handleTrackClick={handleRecommendedTrackClick}
             addTrackToPlaylist={addTrackToPlaylist}/>
         ))}
       </div>

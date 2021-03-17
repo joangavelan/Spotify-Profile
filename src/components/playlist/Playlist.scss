@@ -99,9 +99,27 @@
     }
 
     &-thumbnail {
+      position: relative;
       width: 4rem;
       height: 4rem;
       margin-right: 1.5rem;
+
+      & > img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      & > svg {
+        font-size: 2.2rem;
+        color: white;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+        opacity: 0;
+      }
     }
 
     &-name {
@@ -150,6 +168,17 @@
 
       .playlist__delete-icon {
         opacity: 1;
+      }
+
+      .playlist__track-thumbnail {
+
+        & > .r-thumbnail {
+          filter: brightness(55%);
+        }
+
+        & > svg {
+          opacity: 1;
+        }
       }
     }
 

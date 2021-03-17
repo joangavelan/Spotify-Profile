@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom'
 import Loader from '../loader/Loader'
 import './Playlist.scss'
 import Header from './Header'
-import Tracks from './Tracks'
+import Body from './Body'
 import { useGlobalState } from '../Provider'
 
 const Playlist = () => {
@@ -37,7 +37,7 @@ const Playlist = () => {
       {playlist ?
       <>
         <Header playlist={playlist} />
-        <Tracks playlist={playlist} />
+        <Body playlist={playlist} />
       </>
       : <Loader />
       }

@@ -1,48 +1,53 @@
 import React, { useRef, useEffect } from 'react'
-import Track from './Track';
-import { spotifyApi }  from '../spotify'
-import { ACTIONS } from '../reducer'
+import Head from './Head'
+import PlaylistTracks from './PlaylistTracks'
+import '../../sass/_layout.scss'
+import Recommendations from '../recommendations/Recommendations'
+import Warning from '../utilities/Warning'
 import { useGlobalState } from '../Provider'
+import { ACTIONS } from '../reducer'
 
-const Body = ({playlist, handleTrackClick, clickedTrackIndex, setClickedTrackIndex, setClickedTrackUrl}) => {
+const Body = ({ playlist }) => {
 
-  const [{}, dispatch] = useGlobalState();
+  const [{ selected_track }, dispatch] = useGlobalState();
 
-  const useOutsideAlerter = (ref) => {
-    useEffect(() => {
-      function handleClickOutside(event) {
-        if(ref.current && !ref.current.contains(event.target) && !event.target.matches('.playlist__playerLink')) {
-          setClickedTrackIndex(false);
-          setClickedTrackUrl('');
-        }
+  const handleAnchorTag = (e) => {
+    if(!selected_track.url) e.preventDefault();
+  }
+
+  let playlistTracksRef = useRef(null);
+  let recommendedTracksRef = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if(!playlistTracksRef.current.contains(event.target) && !recommendedTracksRef.current.contains(event.target) && !event.target.matches('.playlist__playerLink')) {
+        dispatch({type: ACTIONS.SET_UNSELECT_TRACK});
       }
-      document.addEventListener("mousedown", handleClickOutside);
-      return () => {
-        document.removeEventListener("mousedown", handleClickOutside);
-      };
-    }, [ref]);
-  }
-
-  const playlistTracksRef = useRef();
-  useOutsideAlerter(playlistTracksRef);
-
-  const removeTrackFromPlaylist = (uri) => {
-    const uris = [uri];
-    spotifyApi.removeTracksFromPlaylist(playlist.id, uris);
-    dispatch({type: ACTIONS.SET_UPDATE})
-  }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [])
 
   return (
-    <div className="playlist__tracks-body" ref={playlistTracksRef}>
-      {playlist.tracks.items.map((item, index) => ( 
-        <Track 
-          key={item.track.id}
-          item={item}
-          index={index}
-          clickedTrackIndex={clickedTrackIndex}
-          handleTrackClick={handleTrackClick}
-          removeTrack={removeTrackFromPlaylist}/>
-      ))}
+    <div className="playlist__tracksContainer">
+      {playlist.tracks.items.length > 0 ?
+      <>
+        <a className="playlist__playerLink" 
+           onClick={handleAnchorTag}
+           style={{backgroundColor: selected_track.url ? '#1DB954' : '#00a73b'}}
+           href={selected_track.url} 
+           target="_blank">
+            Play on spotify
+        </a>
+        <div className="playlist__tracks">
+          <Head />
+          <PlaylistTracks playlist={playlist} playlistTracksRef={playlistTracksRef}/>
+        </div>
+        <Recommendations playlist={playlist} recommendedTracksRef={recommendedTracksRef}/>
+      </>
+      : <Warning />}
     </div>
   )
 }
