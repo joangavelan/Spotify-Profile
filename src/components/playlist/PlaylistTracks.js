@@ -20,6 +20,8 @@ const PlaylistTracks = ({playlist, playlistTracksRef}) => {
     dispatch({type: ACTIONS.SET_UPDATE})
   }
 
+  console.log(playlist.tracks.items)
+
   return (
     <div className="playlist__tracks-body" ref={playlistTracksRef}>
       {playlist.tracks.items.map((item, index) => ( 

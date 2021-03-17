@@ -1,11 +1,12 @@
 import React from 'react'
-import { getArtists, millsToMinAndSec, clockFormat, getDayDiff } from '../helpers'
+import { getArtists, millsToMinAndSec, clockFormat, getTimeDifference } from '../helpers'
 import { AiOutlineDelete } from 'react-icons/ai'
 import { useGlobalState } from '../Provider'
 
 const Track = ({item, index, handleTrackClick, removeTrack}) => {
 
   const [{selected_track}] = useGlobalState();
+  const added = getTimeDifference(item.added_at);
 
   return (
     <div 
@@ -30,7 +31,7 @@ const Track = ({item, index, handleTrackClick, removeTrack}) => {
         </div>
       </div>
       <div><span className="playlist__track-album">{item.track.album.name}</span></div>
-      <div><span>{`${getDayDiff(item.added_at)} days ago`}</span></div>
+      <div><span>{added}</span></div>
       <div>
         <AiOutlineDelete 
           className="playlist__delete-icon" 
