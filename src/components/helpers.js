@@ -29,7 +29,7 @@ export function getArtists(artistsArr) {
 export function getTimeDifference(added_date) {
   const now = new Date();
   const added_at = new Date(added_date);
-
+  
   const msPerMinute = 60 * 1000;
   const msPerHour = msPerMinute * 60;
   const msPerDay = msPerHour * 24;

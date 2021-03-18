@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { getArtists } from '../helpers'
 import { RiPlayMiniFill } from 'react-icons/ri'
 import { useGlobalState } from '../Provider'
@@ -6,6 +6,8 @@ import { useGlobalState } from '../Provider'
 const RecommendedTrack = ({track, index, handleTrackClick, addTrackToPlaylist}) => {
 
   const [{ selected_track }] = useGlobalState();
+
+  const artists = useCallback(getArtists(track.artists), []);
 
   return (
     <div
@@ -18,7 +20,7 @@ const RecommendedTrack = ({track, index, handleTrackClick, addTrackToPlaylist}) 
         </div>
         <div className="playlist__track-brand">
           <p className="playlist__track-name">{track.name}</p>
-          <p className="playlist__track-artist">{getArtists(track.artists)}</p>
+          <p className="playlist__track-artist">{artists}</p>
         </div>
       </div>
       <div><p className="playlist__track-album">{track.name}</p></div>

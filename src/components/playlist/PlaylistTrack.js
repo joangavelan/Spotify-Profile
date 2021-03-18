@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { getArtists, millsToMinAndSec, clockFormat, getTimeDifference } from '../helpers'
 import { AiOutlineDelete } from 'react-icons/ai'
 import { useGlobalState } from '../Provider'
@@ -6,10 +6,13 @@ import { useGlobalState } from '../Provider'
 const Track = ({item, index, handleTrackClick, removeTrack}) => {
 
   const [{selected_track}] = useGlobalState();
-  const added = getTimeDifference(item.added_at);
+
+  const added = useCallback(getTimeDifference(item.added_at), []);
+  const trackDuration = useCallback(millsToMinAndSec(item.track.duration_ms, clockFormat), []);
+  const artists = useCallback(getArtists(item.track.artists), []);
 
   return (
-    <div 
+    <div
       className={`playlist__track grid-row ${selected_track.field === 'playlist' && selected_track.index === index ? 'selected' : ''} `} 
       onClick={(e) => handleTrackClick(item.track.external_urls.spotify, index, e)}>
       <div>{index+1}</div>
@@ -21,12 +24,8 @@ const Track = ({item, index, handleTrackClick, removeTrack}) => {
               alt={item.track.name}/>
           </div>
           <div className="playlist__track-brand">
-            <p className="playlist__track-name">
-            {item.track.name}
-            </p>
-            <p className="playlist__track-artist">
-            {getArtists(item.track.artists)}
-            </p>
+            <p className="playlist__track-name">{item.track.name}</p>
+            <p className="playlist__track-artist">{artists}</p>
           </div>
         </div>
       </div>
@@ -36,7 +35,7 @@ const Track = ({item, index, handleTrackClick, removeTrack}) => {
         <AiOutlineDelete 
           className="playlist__delete-icon" 
           onClick={() => removeTrack(item.track.uri)}/>
-        <span>{millsToMinAndSec(item.track.duration_ms, clockFormat)}</span>
+        <span>{trackDuration}</span>
       </div>
     </div>
   )
