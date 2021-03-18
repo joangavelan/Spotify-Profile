@@ -20,7 +20,7 @@ const Body = ({ playlist }) => {
 
   useEffect(() => {
     function handleClickOutside(event) {
-      if(playlistTracksRef.current && recommendedTracksRef.current && !playlistTracksRef.current.contains(event.target) && !recommendedTracksRef.current.contains(event.target) && !event.target.matches('.playlist__playerLink') || event.target.matches('.playlist__delete-icon') || event.target.matches('.playlist__track-add')) {
+      if((playlistTracksRef.current && recommendedTracksRef.current && !playlistTracksRef.current.contains(event.target) && !recommendedTracksRef.current.contains(event.target) && !event.target.matches('.playlist__playerLink')) || event.target.matches('.playlist__delete-icon') || event.target.matches('.playlist__track-add')) {
         dispatch({type: ACTIONS.SET_UNSELECT_TRACK});
       }
       }
@@ -28,7 +28,7 @@ const Body = ({ playlist }) => {
       return () => {
         document.removeEventListener("mousedown", handleClickOutside);
       };
-  }, [])
+  }, [dispatch]);
 
   return (
     <div className="playlist__tracksContainer">
@@ -38,7 +38,8 @@ const Body = ({ playlist }) => {
            onClick={handleAnchorTag}
            style={{backgroundColor: selected_track.url ? '#1DB954' : '#00a73b'}}
            href={selected_track.url} 
-           target="_blank">
+           target="_blank"
+           rel="noreferrer">
             Play on spotify
         </a>
         <div className="playlist__tracks">

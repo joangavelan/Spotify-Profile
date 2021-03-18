@@ -9,7 +9,8 @@ const Title = ({track, artists}) => {
       <div className="playlist__track-thumbnail">
         <img 
           className="r-thumbnail" 
-          src={track.album?.images[2]?.url}/>
+          src={track.album?.images[2]?.url}
+          alt={track.name}/>
         <RiPlayMiniFill />
       </div>
       <div className="playlist__track-brand">

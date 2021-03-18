@@ -12,9 +12,11 @@ const Recommendations = ({ playlist, recommendedTracksRef}) => {
 
   const playlistTrackItems = playlist.tracks.items;
 
-  useEffect( async () => {
-    const tracks = await fetchRecommendations(10);
-    setTracks(tracks);
+  useEffect( () => {
+    fetchRecommendations(10)
+      .then(tracks => {
+        setTracks(tracks);
+      });
   }, [])
 
   const fetchRecommendations = async (limit) => {

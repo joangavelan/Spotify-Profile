@@ -28,7 +28,7 @@ function App() {
       spotifyApi.getUserPlaylists().then(playlists => {dispatch({type: ACTIONS.SET_PLAYLISTS, playlists})})
     }
 
-  }, [])
+  }, [dispatch])
 
   return (
     <Router>

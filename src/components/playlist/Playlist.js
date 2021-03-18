@@ -25,7 +25,7 @@ const Playlist = () => {
       fetchPlaylist(playlistId);
     }, 500);
     return () => clearTimeout(id)
-  }, [update])
+  }, [playlistId, update])
 
   const fetchPlaylist = async (id) => {
     const playlistFetch = await spotifyApi.getPlaylist(id);
