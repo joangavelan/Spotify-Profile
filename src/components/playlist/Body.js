@@ -20,7 +20,7 @@ const Body = ({ playlist }) => {
 
   useEffect(() => {
     function handleClickOutside(event) {
-      if(playlistTracksRef.current && recommendedTracksRef.current && !playlistTracksRef.current.contains(event.target) && !recommendedTracksRef.current.contains(event.target) && !event.target.matches('.playlist__playerLink')) {
+      if(playlistTracksRef.current && recommendedTracksRef.current && !playlistTracksRef.current.contains(event.target) && !recommendedTracksRef.current.contains(event.target) && !event.target.matches('.playlist__playerLink') || event.target.matches('.playlist__delete-icon') || event.target.matches('.playlist__track-add')) {
         dispatch({type: ACTIONS.SET_UNSELECT_TRACK});
       }
       }

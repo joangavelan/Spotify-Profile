@@ -8,7 +8,7 @@ const PlaylistTracks = ({playlist, playlistTracksRef}) => {
   const [{}, dispatch] = useGlobalState();
 
   const handlePlaylistTrackClick = (url, index, e) => {
-    if(e.target.matches('.playlist__delete-icon')) return;
+    if(e.target && e.target.matches('.playlist__delete-icon')) return;
     dispatch({type: ACTIONS.SET_SELECTED_TRACK_URL, url})
     dispatch({type: ACTIONS.SET_SELECTED_TRACK_INDEX, index})
     dispatch({type: ACTIONS.SET_SELECTED_TRACK_FIELD, field: 'playlist'})
@@ -19,8 +19,6 @@ const PlaylistTracks = ({playlist, playlistTracksRef}) => {
     spotifyApi.removeTracksFromPlaylist(playlist.id, uris);
     dispatch({type: ACTIONS.SET_UPDATE})
   }
-
-  console.log(playlist.tracks.items)
 
   return (
     <div className="playlist__tracks-body" ref={playlistTracksRef}>
@@ -36,4 +34,4 @@ const PlaylistTracks = ({playlist, playlistTracksRef}) => {
   )
 };
 
-export default PlaylistTracks 
+export default PlaylistTracks
