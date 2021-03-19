@@ -13,13 +13,14 @@
 
   & > div:first-child {
     justify-content: center;
+    overflow: visible;
   }
 
   & > div:last-child {
     position: relative;
-    overflow: visible;
     justify-content: flex-end;
     margin-right: 1.5rem;
+    overflow: visible;
   }
 }
 

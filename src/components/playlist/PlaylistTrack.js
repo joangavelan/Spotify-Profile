@@ -1,9 +1,17 @@
 import React, { useCallback } from 'react'
 import { getArtists, millsToMinAndSec, clockFormat, getTimeDifference } from '../helpers'
+import { RiPlayMiniFill } from 'react-icons/ri'
 import { AiOutlineDelete } from 'react-icons/ai'
 import { useGlobalState } from '../Provider'
 
-const Numeration = ({index}) => <div>{index + 1}</div>;
+const Numeration = ({index}) => {
+  return (
+    <div className="playlist__track-numeration">
+      <RiPlayMiniFill className="play-icon" />
+      <span>{index + 1}</span>
+    </div>
+  );
+} 
 
 const Title = ({item, artists}) => {
   return (
@@ -44,7 +52,7 @@ const Added = ({added}) => {
 const LastColumn = ({item, duration, removeTrack}) => {
   return (
     <div>
-      <AiOutlineDelete className="playlist__delete-icon" onClick={() => removeTrack(item.track.uri)}/>
+      <AiOutlineDelete className="delete-icon" onClick={() => removeTrack(item.track.uri)}/>
       <span>{duration}</span>
     </div>
   );
@@ -57,7 +65,7 @@ const Track = ({item, index, handleTrackClick, removeTrack}) => {
   const added = useCallback(getTimeDifference(item.added_at), []);
   const trackDuration = useCallback(millsToMinAndSec(item.track.duration_ms, clockFormat), []);
   const artists = useCallback(getArtists(item.track.artists), []);
-  const selectedClass = selected_track.field === 'playlist' && selected_track.index === index ? 'selected' : '';
+  const selectedClass = selected_track.field === 'playlist' && selected_track.index === index ? 'selected' : '';  
 
   return (
     <div 

@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react'
-import Head from './Head'
+import Columns from './Columns'
 import PlaylistTracks from './PlaylistTracks'
 import '../../sass/_layout.scss'
 import Recommendations from '../recommendations/Recommendations'
@@ -31,7 +31,8 @@ const Body = ({ playlist }) => {
   }, [dispatch]);
 
   return (
-    <div className="playlist__tracksContainer">
+    <div className="playlist__body">
+      <div className="playlist__body-cover"/>
       {playlist.tracks.items.length > 0 ?
       <>
         <a className="playlist__playerLink" 
@@ -43,7 +44,7 @@ const Body = ({ playlist }) => {
             Play on spotify
         </a>
         <div className="playlist__tracks">
-          <Head />
+          <Columns />
           <PlaylistTracks playlist={playlist} playlistTracksRef={playlistTracksRef}/>
         </div>
         <Recommendations playlist={playlist} recommendedTracksRef={recommendedTracksRef}/>

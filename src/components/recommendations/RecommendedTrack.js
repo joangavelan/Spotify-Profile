@@ -11,7 +11,7 @@ const Title = ({track, artists}) => {
           className="r-thumbnail" 
           src={track.album?.images[2]?.url}
           alt={track.name}/>
-        <RiPlayMiniFill />
+        <RiPlayMiniFill className="play-icon"/>
       </div>
       <div className="playlist__track-brand">
         <p className="playlist__track-name">{track.name}</p>

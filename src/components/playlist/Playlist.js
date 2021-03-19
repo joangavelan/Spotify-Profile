@@ -29,20 +29,21 @@ const Playlist = () => {
 
   const fetchPlaylist = async (id) => {
     const playlistFetch = await spotifyApi.getPlaylist(id);
+    console.log(playlistFetch);
     setPlaylist(playlistFetch);
   }
 
   return (
-    <div className="playlist">
-      {playlist ?
-      <>
-        <Header playlist={playlist} />
-        <Body playlist={playlist} />
-      </>
-      : <Loader />
+    <>
+      {playlist ? 
+        <div className="playlist">
+          <Header playlist={playlist} />
+          <Body playlist={playlist} />
+        </div>
+        : <Loader />
       }
-    </div>
-  )
+    </>
+  );
 }
 
 export default Playlist
