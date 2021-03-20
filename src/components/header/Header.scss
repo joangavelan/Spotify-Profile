@@ -1,8 +1,9 @@
 .header {
+  display: flex;
+  align-items: flex-end;
   height: 34.5rem;
   position: relative;
-  padding: 3rem 3rem;
-  padding-top: 8rem;
+  padding: 3rem;
   background-color: rgb(135, 119, 63);
 
   &-cover {

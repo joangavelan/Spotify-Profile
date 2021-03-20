@@ -1,7 +1,61 @@
+@import '../../sass/variables';
+
 .card {
   width: 18.5rem;
   height: 26rem;
   background-color: #181818;
+  border-radius: 3px;
   padding: 1.5rem;
   cursor: pointer;
+
+  &__img-wrapper {
+    position: relative;
+    width: 15.5rem;
+    height: 15.5rem;
+    margin-bottom: 2rem;
+
+    & > img {
+      width: 100%;
+      border-radius: 50%;
+    }
+
+    & > svg {
+      box-sizing: content-box;
+      position: absolute;
+      right: 1rem;
+      bottom: 1rem;
+      font-size: 2.1rem;
+      background-color: $color-primary-dark;
+      border-radius: 50%;
+      opacity: 0;
+      padding: 9px;
+      cursor: default;
+
+      &:hover {
+        transform: scale(1.06);
+      }
+    }
+  }
+
+  &__content {
+
+    & > h3 {
+      font-size: 1.6rem;
+      margin-bottom: 2px;
+    }
+    
+    & > p {
+      font-size: 1.4rem;
+      color: $color-gray-light;
+      text-transform: capitalize;
+    }
+  }
+
+  &:hover {
+    background-color: #282828;
+
+    & svg {
+      opacity: 1;
+    }
+  }
 }
