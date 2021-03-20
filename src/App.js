@@ -3,7 +3,7 @@ import Login from "./components/login/Login";
 import { getTokenFromUrl } from './components/spotify'
 import { useGlobalState } from './components/Provider'
 import { ACTIONS } from './components/reducer'
-import Profile from './components/profile/Profile'
+import SpotifyProfile from './components/spotify-profile/SpotifyProfile'
 import { BrowserRouter as Router } from "react-router-dom";
 import { spotifyApi } from './components/spotify'
 
@@ -33,7 +33,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        {token ? <Profile /> : <Login />}
+        {token ? <SpotifyProfile /> : <Login />}
       </div>
     </Router>
     

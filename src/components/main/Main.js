@@ -1,16 +1,18 @@
 import React from 'react'
-import './Body.scss'
+import './Main.scss'
 import { Route, Switch } from 'react-router-dom'
 import Playlist from '../playlist/Playlist'
+import Profile from '../profile/Profile'
 
-const Body = () => {
+const Main = () => {
   return (
-    <main className="body">
+    <main className="main">
       <Switch>
+        <Route path="/" component={Profile} exact/>
         <Route path="/:playlist" component={Playlist}/>
       </Switch>
     </main>
   )
 }
 
-export default Body
+export default Main

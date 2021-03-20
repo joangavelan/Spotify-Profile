@@ -1,0 +1,36 @@
+.user {
+  display: flex;
+  align-items: flex-end;
+
+  & .img-wrapper {
+    width: 23rem;
+    height: 23rem;
+    overflow: hidden;
+    border-radius: 50%;
+    box-shadow: 0 4px 5rem rgba(40,40,40,5);
+    margin-right: 3rem;
+
+    & > img {
+      width: 100%;
+    }
+  }
+
+  &-content {
+
+    & > h3 {
+      font-size: 1.2rem;
+      text-transform: uppercase;
+    }
+
+    & > h2 {
+      font-size: 9.2rem;
+      line-height: 1.7;
+      letter-spacing: -4px;
+    }
+
+    & > p {
+      font-size: 1.4rem;
+      color: hsla(0,0%,100%,.7);
+    }
+  }
+}
