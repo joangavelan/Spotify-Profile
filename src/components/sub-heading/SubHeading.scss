@@ -1,0 +1,14 @@
+.sub-heading {
+  margin-bottom: 2rem;
+
+  & > h2 {
+    font-size: 2.4rem;
+    letter-spacing: -1px;
+  }
+
+  & > p {
+    font-size: 1.5rem;
+    color: rgb(179, 179, 179);
+    margin-top: 2px;
+  }
+}
