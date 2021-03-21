@@ -20,6 +20,10 @@ export function millsToMinAndSec(millis, format) {
   return format(minutes, seconds);
 }
 
+export function getTrackDuration(millis) {
+  return millsToMinAndSec(millis, clockFormat);
+}
+
 export function getArtists(artistsArr) {
   const artist_names = [];
   artistsArr.forEach(artist => artist_names.push(artist.name));

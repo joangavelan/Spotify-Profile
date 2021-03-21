@@ -35,3 +35,7 @@
     margin-right: 0;
   }
 }
+
+.col-4 {
+  grid-template-columns: .03fr 1.3fr 1.4fr .17fr;
+}

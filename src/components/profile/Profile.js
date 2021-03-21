@@ -6,16 +6,17 @@ import User from '../user/User'
 import SubHeading from '../sub-heading/SubHeading'
 import { spotifyApi } from '../spotify'
 import MostStreamedArtists from '../most-streamed-artists/MostStreamedArtists'
+import TopTracks from '../top-tracks/TopTracks'
 
 const Profile = () => {
 
   const [{user}] = useGlobalState();
-  const [mostStreamedArtists, setMostStreamedArtists] = useState([]);
+  const [topArtists, setTopArtists] = useState([]);
 
   useEffect(() => {
     async function fetchMostStreamedArtists() {
       const artists = await spotifyApi.getMyTopArtists({limit: 8});
-      setMostStreamedArtists(artists.items)
+      setTopArtists(artists.items);
     }
 
     fetchMostStreamedArtists();
@@ -32,7 +33,13 @@ const Profile = () => {
           <SubHeading
             title="Most streamed artists this month"
             description="Only visible to you"/>
-          <MostStreamedArtists artists={mostStreamedArtists}/>
+          <MostStreamedArtists artists={topArtists}/>
+        </div>
+        <div className="row">
+          <SubHeading 
+            title="Most streamed tracks this month"
+            description="Only visible to you"/>
+          <TopTracks limit={4}/>
         </div>
       </Body>
     </div>

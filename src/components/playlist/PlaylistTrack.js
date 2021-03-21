@@ -1,81 +1,37 @@
 import React, { useCallback } from 'react'
-import { getArtists, millsToMinAndSec, clockFormat, getTimeDifference } from '../helpers'
-import { RiPlayMiniFill } from 'react-icons/ri'
-import { AiOutlineDelete } from 'react-icons/ai'
+import { getArtists, getTimeDifference } from '../helpers'
 import { useGlobalState } from '../Provider'
-
-const Numeration = ({index}) => {
-  return (
-    <div className="playlist__track-numeration">
-      <RiPlayMiniFill className="play-icon" />
-      <span>{index + 1}</span>
-    </div>
-  );
-} 
-
-const Title = ({item, artists}) => {
-  return (
-    <div className="playlist__track-title-wrapper">
-      <div className="playlist__track-title">
-        <div className="playlist__track-thumbnail">
-          <img 
-            src={item.track.album?.images[2]?.url} 
-            alt={item.track.name}/>
-        </div>
-        <div className="playlist__track-brand">
-          <p className="playlist__track-name">{item.track.name}</p>
-          <p className="playlist__track-artist">{artists}</p>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-const Album = ({item}) => {
-  return (
-    <div>
-      <span className="playlist__track-album">
-        {item.track.album.name}
-      </span>
-    </div>
-  );
-}
-
-const Added = ({added}) => {
-  return (
-    <div>
-      <span>{added}</span>
-    </div>
-  );
-}
-
-const LastColumn = ({item, duration, removeTrack}) => {
-  return (
-    <div>
-      <AiOutlineDelete className="delete-icon" onClick={() => removeTrack(item.track.uri)}/>
-      <span>{duration}</span>
-    </div>
-  );
-}
+import Numeration from '../track/Numeration'
+import Title from '../track/Title'
+import Album from '../track/Album'
+import Added from '../track/Added'
+import Duration from '../track/Duration'
 
 const Track = ({item, index, handleTrackClick, removeTrack}) => {
 
   const [{selected_track}] = useGlobalState();
 
   const added = useCallback(getTimeDifference(item.added_at), []);
-  const trackDuration = useCallback(millsToMinAndSec(item.track.duration_ms, clockFormat), []);
-  const artists = useCallback(getArtists(item.track.artists), []);
   const selectedClass = selected_track.field === 'playlist' && selected_track.index === index ? 'selected' : '';  
+
+  console.log(item)
 
   return (
     <div 
       className={`playlist__track grid-row ${selectedClass}`} 
       onClick={(e) => handleTrackClick(item.track.external_urls.spotify, index, e)}>
         <Numeration index={index}/>
-        <Title item={item} artists={artists}/>
-        <Album item={item}/>
+        <Title 
+          albumImageUrl={item.track.album?.images?.[2]?.url} 
+          trackName={item.track.name}
+          trackArtists={item.track.artists}/>
+        <Album name={item.track.album.name}/>
         <Added added={added}/>
-        <LastColumn item={item} duration={trackDuration} removeTrack={removeTrack}/>
+        <Duration 
+          uri={item.track.uri}
+          durationMs={item.track.duration_ms} 
+          removeTrack={removeTrack}
+          deleteIcon={true}/>
     </div>
   )
 }

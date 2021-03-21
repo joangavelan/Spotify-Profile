@@ -2,6 +2,7 @@ import React, { useCallback } from 'react'
 import { getArtists } from '../helpers'
 import { RiPlayMiniFill } from 'react-icons/ri'
 import { useGlobalState } from '../Provider'
+import Name from '../track/Name'
 
 const Title = ({track, artists}) => {
   return (
@@ -17,16 +18,6 @@ const Title = ({track, artists}) => {
         <p className="playlist__track-name">{track.name}</p>
         <p className="playlist__track-artist">{artists}</p>
       </div>
-    </div>
-  );
-}
-
-const Name = ({track}) => {
-  return (
-    <div>
-      <p className="playlist__track-album">
-        {track.name}
-      </p>
     </div>
   );
 }
@@ -55,7 +46,7 @@ const RecommendedTrack = ({track, index, handleTrackClick, handleTrackAdittion})
       className={`playlist__track grid-row col-3 ${selectedClass}`}
       onClick={(e) => handleTrackClick(track.external_urls.spotify, index, e)}>
         <Title track={track} artists={artists}/>
-        <Name track={track}/>
+        <Name name={track.name}/>
         <AddButton track={track} handleTrackAdittion={handleTrackAdittion}/>
     </div>
   )
