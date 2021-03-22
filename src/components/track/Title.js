@@ -26,22 +26,3 @@ const Title = ({albumImageUrl, trackName, trackArtists, icon, filter}) => {
 }
 
 export default Title
-
-
-// const Title = ({track, artists}) => {
-//   return (
-//     <div className="track-title">
-//       <div className="track-thumbnail">
-//         <img 
-//           className="r-thumbnail" 
-//           src={track.album?.images[2]?.url}
-//           alt={track.name}/>
-//         <RiPlayMiniFill className="play-icon"/>
-//       </div>
-//       <div className="track-brand">
-//         <p className="track-name">{track.name}</p>
-//         <p className="track-artist">{artists}</p>
-//       </div>
-//     </div>
-//   );
-// }
