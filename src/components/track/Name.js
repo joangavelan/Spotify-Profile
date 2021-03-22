@@ -1,7 +1,7 @@
 const Name = ({name}) => {
   return (
     <div>
-      <p className="playlist__track-album">
+      <p className="track-album">
         {name}
       </p>
     </div>

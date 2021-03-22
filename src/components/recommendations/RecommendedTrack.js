@@ -1,53 +1,30 @@
-import React, { useCallback } from 'react'
-import { getArtists } from '../helpers'
-import { RiPlayMiniFill } from 'react-icons/ri'
+import React from 'react'
 import { useGlobalState } from '../Provider'
 import Name from '../track/Name'
-
-const Title = ({track, artists}) => {
-  return (
-    <div className="playlist__track-title">
-      <div className="playlist__track-thumbnail">
-        <img 
-          className="r-thumbnail" 
-          src={track.album?.images[2]?.url}
-          alt={track.name}/>
-        <RiPlayMiniFill className="play-icon"/>
-      </div>
-      <div className="playlist__track-brand">
-        <p className="playlist__track-name">{track.name}</p>
-        <p className="playlist__track-artist">{artists}</p>
-      </div>
-    </div>
-  );
-}
-
-const AddButton = ({track, handleTrackAdittion}) => {
-  return (
-    <div>
-      <button 
-        className="playlist__track-add"
-        onClick={() => handleTrackAdittion(track.uri, track.id)}>
-          Add
-      </button>
-    </div>
-  );
-}
+import AddButton from '../track/AddButton'
+import Title from '../track/Title'
 
 const RecommendedTrack = ({track, index, handleTrackClick, handleTrackAdittion}) => {
 
   const [{ selected_track }] = useGlobalState();
 
-  const artists = useCallback(getArtists(track.artists), []);
   const selectedClass = selected_track.field === 'recommended' && selected_track.index === index ? 'selected' : '';
 
   return (
     <div
-      className={`playlist__track grid-row col-3 ${selectedClass}`}
+      className={`track grid-row col-3 ${selectedClass}`}
       onClick={(e) => handleTrackClick(track.external_urls.spotify, index, e)}>
-        <Title track={track} artists={artists}/>
-        <Name name={track.name}/>
-        <AddButton track={track} handleTrackAdittion={handleTrackAdittion}/>
+        <Title 
+          albumImageUrl={track.album?.images[2]?.url} 
+          trackName={track.name}
+          trackArtists={track.artists}
+          icon={true}
+          filter={true}/>
+        <Name 
+          name={track.name}/>
+        <AddButton 
+          track={track} 
+          handleTrackAdittion={handleTrackAdittion}/>
     </div>
   )
 }

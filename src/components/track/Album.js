@@ -1,7 +1,7 @@
 const Album = ({name}) => {
   return (
     <div>
-      <span className="playlist__track-album">
+      <span className="track-album">
         {name}
       </span>
     </div>

@@ -3,11 +3,12 @@ import Duration from '../track/Duration'
 import Name from '../track/Name'
 import Numeration from '../track/Numeration'
 import Title from '../track/Title'
+import '../track/Tracks.scss'
 
 const Track = ({track, index}) => {
 
   return (
-    <div className="track grid-row">
+    <div className="track grid-row col-4">
       <Numeration 
         index={index}/>
       <Title 

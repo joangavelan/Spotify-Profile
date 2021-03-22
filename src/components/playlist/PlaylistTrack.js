@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react'
-import { getArtists, getTimeDifference } from '../helpers'
+import { getTimeDifference } from '../helpers'
 import { useGlobalState } from '../Provider'
 import Numeration from '../track/Numeration'
 import Title from '../track/Title'
@@ -18,7 +18,7 @@ const Track = ({item, index, handleTrackClick, removeTrack}) => {
 
   return (
     <div 
-      className={`playlist__track grid-row ${selectedClass}`} 
+      className={`track grid-row ${selectedClass}`} 
       onClick={(e) => handleTrackClick(item.track.external_urls.spotify, index, e)}>
         <Numeration index={index}/>
         <Title 
