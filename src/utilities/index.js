@@ -1,3 +1,6 @@
+import { useEffect } from 'react'
+import { ACTIONS } from '../components/reducer'
+
 export function getPlaylistDuration (playlistItems) {
   let total = 0;
   playlistItems.forEach(item => {
@@ -77,4 +80,29 @@ export function getTimeDifference(added_date) {
     timeDiff = Math.round(elapsed/msPerYear);   
     return `${timeDiff} ${timeDiff === 1 ? 'year ago' : 'years ago'}`   
   }
+}
+
+export function handleTrackClick(event, {preventClass, dispatch, url, index, field}) {
+  if(event.target && event.target.matches(preventClass)) return;
+  dispatch({type: ACTIONS.SET_SELECTED_TRACK_URL, url});
+  dispatch({type: ACTIONS.SET_SELECTED_TRACK_INDEX, index});
+  dispatch({type: ACTIONS.SET_SELECTED_TRACK_FIELD, field});
+}
+
+export function useOutsideHandler(ref, dispatch) {
+  useEffect(() => {
+    function handleClickOutside(event) {
+        if(ref.current && !ref.current.contains(event.target)) {
+          dispatch({type: ACTIONS.SET_UNSELECT_TRACK});
+        }
+      }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [ref, dispatch]);
+}
+
+export function getSelectedClass(trackField, trackIndex, field, index) {
+  return trackField === field && trackIndex === index ? 'selected' : '';
 }

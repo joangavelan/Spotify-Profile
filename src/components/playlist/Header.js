@@ -1,7 +1,4 @@
-import React from 'react'
-import { getPlaylistDuration } from '../helpers'
-import { millsToMinAndSec } from '../helpers'
-import { minSecFormat } from '../helpers'
+import { getPlaylistDuration, millsToMinAndSec, minSecFormat } from '../../utilities'
 import { RiMusicLine } from 'react-icons/ri'
 
 const Header = ({playlist}) => {

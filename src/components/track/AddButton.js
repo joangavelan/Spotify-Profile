@@ -1,9 +1,9 @@
-const AddButton = ({track, handleTrackAdittion}) => {
+const AddButton = ({id, uri, handleTrackAdittion}) => {
   return (
     <div>
       <button 
         className="track-add"
-        onClick={() => handleTrackAdittion(track.uri, track.id)}>
+        onClick={() => handleTrackAdittion(uri, id)}>
           Add
       </button>
     </div>

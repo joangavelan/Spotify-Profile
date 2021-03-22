@@ -1,5 +1,5 @@
 import { useCallback } from 'react'
-import { getArtists } from '../helpers'
+import { getArtists } from '../../utilities'
 import { RiPlayMiniFill } from 'react-icons/ri'
 
 const Title = ({albumImageUrl, trackName, trackArtists, icon, filter}) => {

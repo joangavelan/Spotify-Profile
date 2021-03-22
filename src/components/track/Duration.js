@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 import { AiOutlineDelete } from 'react-icons/ai'
-import { getTrackDuration } from '../helpers'
+import { getTrackDuration } from '../../utilities'
 
 const Duration = ({uri, durationMs, removeTrack, deleteIcon}) => {
 

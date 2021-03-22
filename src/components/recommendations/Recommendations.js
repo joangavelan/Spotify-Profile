@@ -12,13 +12,6 @@ const Recommendations = ({ playlist, recommendedTracksRef}) => {
 
   const playlistTrackItems = playlist.tracks.items;
 
-  useEffect( () => {
-    fetchRecommendations(10)
-      .then(tracks => {
-        setTracks(tracks);
-      });
-  }, [])
-
   const fetchRecommendations = async (limit) => {
     const seeds = {
       seed_tracks: playlistTrackItems[0].track.id,
@@ -30,6 +23,13 @@ const Recommendations = ({ playlist, recommendedTracksRef}) => {
     const tracks = recommendations.tracks;
     return tracks;
   }
+
+  useEffect( () => {
+    fetchRecommendations(10)
+      .then(tracks => {
+        setTracks(tracks);
+      });
+  }, [])
 
   const addTrackToPlaylist = (uri) => {
     const uris = [uri];
@@ -53,13 +53,6 @@ const Recommendations = ({ playlist, recommendedTracksRef}) => {
     addNewTrackToRecommendations();
   }
 
-  const handleRecommendedTrackClick = (url, index, e) => {
-    if(e.target && e.target.matches('.playlist__track-add')) return;
-    dispatch({type: ACTIONS.SET_SELECTED_TRACK_URL, url});
-    dispatch({type: ACTIONS.SET_SELECTED_TRACK_INDEX, index});
-    dispatch({type: ACTIONS.SET_SELECTED_TRACK_FIELD, field: 'recommended'});
-  }
-
   return (
     <>
       {tracks && 
@@ -71,7 +64,6 @@ const Recommendations = ({ playlist, recommendedTracksRef}) => {
               key={track.id} 
               track={track}
               index={index}
-              handleTrackClick={handleRecommendedTrackClick}
               handleTrackAdittion={handleTrackAddition}/>
           ))}
         </div>

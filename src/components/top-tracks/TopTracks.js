@@ -1,9 +1,12 @@
-import React, { useEffect, useState} from 'react'
+import React, { useEffect, useState, useRef} from 'react'
 import Track from './TopTrack'
 import { spotifyApi } from '../spotify'
+import { useOutsideHandler } from '../../utilities'
+import { useGlobalState } from '../Provider'
 
 const TopTracks = ({limit}) => {
 
+  const [{}, dispatch] = useGlobalState();
   const [topTracks, setTopTracks] = useState([]);
   
   useEffect(() => {
@@ -15,10 +18,13 @@ const TopTracks = ({limit}) => {
     fetchTopTracks();
   }, [limit])
 
-  console.log(topTracks)
+  const topTracksRef = useRef(null);
+  useOutsideHandler(topTracksRef, dispatch);
 
   return (
-    <div className="tracks">
+    <div 
+      ref={topTracksRef}
+      className="tracks">
       {topTracks.map((track, index) => (
         <Track 
           key={track.id} 
