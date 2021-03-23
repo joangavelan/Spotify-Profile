@@ -1,25 +1,38 @@
 @import '../../sass/variables';
 
 .card {
-  width: 18.5rem;
-  height: 26rem;
   background-color: #181818;
-  border-radius: 3px;
+  border-radius: 4px;
   padding: 1.5rem;
+  padding-bottom: 4.5rem;
   cursor: pointer;
 
   &__img-wrapper {
     position: relative;
-    width: 15.5rem;
-    height: 15.5rem;
+    width: 100%;
+    height: 78%;
     margin-bottom: 2rem;
+    background-color: #333;
+    border-radius: 2px;
+    overflow: hidden;
 
     & > img {
+      display: block;
       width: 100%;
-      border-radius: 50%;
+      height: 100%;
+      object-fit: cover;
     }
 
-    & > svg {
+    & > .music-icon {
+      font-size: 9rem;
+      color: #B2B2B2;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    & > .play-icon {
       box-sizing: content-box;
       position: absolute;
       right: 1rem;
@@ -45,6 +58,7 @@
     }
     
     & > p {
+      position: absolute;
       font-size: 1.4rem;
       color: $color-gray-light;
       text-transform: capitalize;

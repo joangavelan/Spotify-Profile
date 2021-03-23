@@ -24,7 +24,8 @@ const TopTracks = ({limit}) => {
   return (
     <div 
       ref={topTracksRef}
-      className="tracks">
+      className="tracks"
+      style={{marginTop: 0}}>
       {topTracks.map((track, index) => (
         <Track 
           key={track.id} 

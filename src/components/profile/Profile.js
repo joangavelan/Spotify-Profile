@@ -7,19 +7,28 @@ import SubHeading from '../sub-heading/SubHeading'
 import { spotifyApi } from '../spotify'
 import MostStreamedArtists from '../most-streamed-artists/MostStreamedArtists'
 import TopTracks from '../top-tracks/TopTracks'
+import PublicPlaylists from '../public-playlists/PublicPlaylists'
 
 const Profile = () => {
 
   const [{user}] = useGlobalState();
   const [topArtists, setTopArtists] = useState([]);
+  const [publicPlaylists, setPublicPlaylists] = useState([]);
 
   useEffect(() => {
     async function fetchMostStreamedArtists() {
       const artists = await spotifyApi.getMyTopArtists({limit: 8});
       setTopArtists(artists.items);
     }
-
     fetchMostStreamedArtists();
+  }, [])
+
+  useEffect(() => {
+    async function fetchPublicPlaylists() {
+      const playlists = await spotifyApi.getUserPlaylists({limit: 8});
+      setPublicPlaylists(playlists.items);
+    }
+    fetchPublicPlaylists();
   }, [])
 
   return (
@@ -40,6 +49,10 @@ const Profile = () => {
             title="Most streamed tracks this month"
             description="Only visible to you"/>
           <TopTracks limit={4}/>
+        </div>
+        <div className="row">
+          <SubHeading title="Public Playlists"/>
+          <PublicPlaylists playlists={publicPlaylists}/>
         </div>
       </Body>
     </div>
