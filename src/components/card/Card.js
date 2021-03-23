@@ -6,13 +6,15 @@ import { FiMusic } from 'react-icons/fi'
 const Card = ({imgUrl, name, description, radius}) => {
   return (
     <div className="card">
-      <div className="card__img-wrapper">
+      <div 
+        className="card__img-wrapper" 
+        style={!imgUrl ? {backgroundColor: '#333'} : null}>
         {imgUrl
-         ? <img 
+          ? <img 
               style={radius ? {borderRadius: '50%'} : null}
               src={imgUrl} 
               alt={name} />
-         : <FiMusic className="music-icon"/>}
+          : <FiMusic className="music-icon"/>}
         <RiPlayMiniFill className="play-icon"/>
       </div>
       <div className="card__content">
