@@ -1,7 +1,7 @@
 import React from 'react'
 import './SidePlaylists.scss'
 import { useGlobalState } from '../Provider'
-import { Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const SidePlaylists = () => {
 
