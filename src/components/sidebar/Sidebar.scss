@@ -2,10 +2,15 @@
   background-color: black;
   width: 23.5rem;
   padding: 7px;
+  overflow-y: overlay;
 
   &__logo {
     width: 15rem;
     margin: 5px;
     margin-bottom: 8px;
   }
+}
+
+.sidebar::-webkit-scrollbar {
+  display: none;
 }
