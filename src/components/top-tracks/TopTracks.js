@@ -19,7 +19,7 @@ const TopTracks = ({limit}) => {
   }, [limit])
 
   const topTracksRef = useRef(null);
-  useOutsideHandler(topTracksRef, dispatch);
+  useOutsideHandler(topTracksRef, dispatch, '.play-icon');
 
   return (
     <div 

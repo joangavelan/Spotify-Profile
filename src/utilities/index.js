@@ -89,10 +89,10 @@ export function handleTrackClick(event, {preventClass, dispatch, url, index, fie
   dispatch({type: ACTIONS.SET_SELECTED_TRACK_FIELD, field});
 }
 
-export function useOutsideHandler(ref, dispatch) {
+export function useOutsideHandler(ref, dispatch, optionalTarget) {
   useEffect(() => {
     function handleClickOutside(event) {
-        if(ref.current && !ref.current.contains(event.target)) {
+        if(ref.current && !ref.current.contains(event.target) && (optionalTarget ? !event.target.matches(optionalTarget) : true)) {
           dispatch({type: ACTIONS.SET_UNSELECT_TRACK});
         }
       }
