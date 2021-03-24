@@ -1,7 +1,7 @@
 import React from 'react'
 import './SidePlaylists.scss'
 import { useGlobalState } from '../Provider'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 const SidePlaylists = () => {
 
@@ -13,9 +13,11 @@ const SidePlaylists = () => {
       <ul>
         {playlists?.items?.map(playlist => (
           <li key={playlist.id}>
-            <Link to={{pathname: `/${playlist.name}`, playlist_id: playlist.id}}>
+            <NavLink 
+              to={{pathname: `/${playlist.name}`, playlist_id: playlist.id}}
+              activeStyle={{ color: 'white' }}>
               {playlist.name}
-            </Link>
+            </NavLink>
           </li>
         ))}
       </ul>
