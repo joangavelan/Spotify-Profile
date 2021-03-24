@@ -1,12 +1,14 @@
 import React from 'react'
 import './Nav.item.scss'
+import { NavLink } from 'react-router-dom'
 
-const NavItem = ({Icon, name, active}) => {
+const NavItem = ({to, Icon, children}) => {
+
   return (
-    <div className={`nav__item ${active ? 'nav__item--active' : ''}`}>
+    <NavLink to={to} className="nav__item" exact>
       <Icon className="nav__item-icon"/>
-      <h3>{name}</h3>
-    </div>
+      <h3>{children}</h3>
+    </NavLink>
   )
 }
 
