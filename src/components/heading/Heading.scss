@@ -1,0 +1,35 @@
+@import '../../sass/variables';
+
+.heading {
+  min-width: 70rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  margin-bottom: 3rem;
+
+  & > div {
+    display: flex;
+    align-items: center;
+
+    & > a {
+      display: block;
+      margin-right: 2rem;
+
+      & > .play-icon {
+        font-size: 2rem;
+        box-sizing: content-box;
+        background-color: $color-primary-dark;
+        border-radius: 50%;
+        padding: 8px;
+        color: white;
+      }
+    }
+  }
+
+  & > .clock-icon {
+    font-size: 1.7rem;
+    margin-right: 1.5rem;
+    box-sizing: content-box;
+  }
+}
