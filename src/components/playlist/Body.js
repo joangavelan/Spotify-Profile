@@ -3,7 +3,7 @@ import Columns from './Columns'
 import PlaylistTracks from './PlaylistTracks'
 import '../../sass/_layout.scss'
 import Recommendations from '../recommendations/Recommendations'
-import Warning from '../utilities/Warning'
+import Warning from '../warning/Warning'
 import { useGlobalState } from '../Provider'
 import { ACTIONS } from '../reducer'
 

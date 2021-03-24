@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { spotifyApi } from '../spotify'
-import Heading from '../utilities/Heading';
+import SubHeading from '../sub-heading/SubHeading'
 import { useGlobalState } from '../Provider'
 import { ACTIONS } from '../reducer' 
 import Track from './RecommendedTrack'
@@ -57,7 +57,9 @@ const Recommendations = ({ playlist, recommendedTracksRef}) => {
     <>
       {tracks && 
       <div className="playlist__recommendations">
-        <Heading playlistName={playlist.name}/>
+        <SubHeading
+          title="Recomendations"
+          description={`Recommended tracks based on ${playlist.name}`}/>
         <div className="playlist__recommended-tracks" ref={recommendedTracksRef}>
           {tracks.map((track, index) => (
             <Track 
