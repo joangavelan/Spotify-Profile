@@ -13,28 +13,28 @@ import Loader from '../loader/Loader'
 const Profile = () => {
 
   const [{user}] = useGlobalState();
-  const [topArtists, setTopArtists] = useState([]);
-  const [publicPlaylists, setPublicPlaylists] = useState([]);
+  const [topArtists, setTopArtists] = useState('');
+  const [publicPlaylists, setPublicPlaylists] = useState('');
+  const [topTracks, setTopTracks] = useState('');
 
   useEffect(() => {
-    async function fetchMostStreamedArtists() {
-      const artists = await spotifyApi.getMyTopArtists({limit: 8});
-      setTopArtists(artists.items);
-    }
-    fetchMostStreamedArtists();
+    spotifyApi.getMyTopArtists({limit: 8})
+      .then(artists => setTopArtists(artists.items));
   }, [])
 
   useEffect(() => {
-    async function fetchPublicPlaylists() {
-      const playlists = await spotifyApi.getUserPlaylists({limit: 8});
-      setPublicPlaylists(playlists.items);
-    }
-    fetchPublicPlaylists();
+    spotifyApi.getUserPlaylists({limit: 8})
+      .then(playlists => setPublicPlaylists(playlists.items));
   }, [])
 
+  useEffect(() => {
+    spotifyApi.getMyTopTracks({limit: 4})
+     .then(topTracks => setTopTracks(topTracks.items));
+  }, [])
+  
   return (
     <>
-      {user && topArtists.length > 0 && publicPlaylists.length > 0 ?
+      {user && topArtists && publicPlaylists && topTracks ?
         <div className="Profile">
         <Header>
           <User user={user}/>
@@ -51,7 +51,7 @@ const Profile = () => {
             <SubHeading 
               title="Most streamed tracks this month"
               description="Only visible to you"/>
-            <TopTracks limit={4}/>
+            <TopTracks topTracks={topTracks}/>
           </div>
           <div className="row">
             <SubHeading title="Public Playlists"/>

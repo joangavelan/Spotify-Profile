@@ -7,18 +7,24 @@ import { spotifyApi } from '../spotify'
  
 const TopTracks = () => {
 
-  const [topTracks, setTopTracks] = useState([]);
+  const [topTracks, setTopTracks] = useState('');
 
   useEffect(() => {
     spotifyApi.getMyTopTracks({limit: 40})
-     .then(topTracks => setTopTracks(topTracks));
+     .then(topTracks => setTopTracks(topTracks.items));
   }, [])
 
   return (
-    <div className="topTracks">
-      <Heading title="Top Tracks"/>
-      <Tracks limit={40} grid={4}/>
-    </div>
+    <>
+      {topTracks 
+        ? 
+          <div className="topTracks">
+            <Heading title="Top Tracks"/>
+            <Tracks topTracks={topTracks}/>
+          </div>
+        : <Loader />     
+      }
+    </>
   )
 }
 
