@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { spotifyApi } from '../spotify'
-import Artists from '../most-streamed-artists/MostStreamedArtists'
+import Card from '../card/Card'
 import Loader from '../loader/Loader';
 
 const TopArtists = () => {
@@ -17,7 +17,17 @@ const TopArtists = () => {
       {topArtists 
       ? <div className="container">
           <h1 style={{marginBottom: '3rem', textAlign: 'center'}}>Top Artists</h1>
-          <Artists artists={topArtists}/>
+          <div className="re-grid-row overflow">
+            {topArtists.map(artist => (
+              <Card
+                key={artist.id}
+                itemUrl={artist.external_urls.spotify}  
+                imgUrl={artist?.images?.[0]?.url}
+                name={artist.name} 
+                description={artist.type}
+                radius={true}/>
+            ))}
+          </div>
         </div>
         
       : <Loader />}
