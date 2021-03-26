@@ -2,7 +2,7 @@ import React from 'react'
 import './Main.scss'
 import { Route, Switch } from 'react-router-dom'
 import Playlist from '../playlist/Playlist'
-import Profile from '../profile/Profile'
+import Profile from '../pages/Profile'
 import TopTracks from '../pages/TopTracks'
 
 const Main = () => {
