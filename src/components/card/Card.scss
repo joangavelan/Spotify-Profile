@@ -1,11 +1,14 @@
 @import '../../sass/variables';
 
 .card {
+  display: block;
+  color: white;
   background-color: #181818;
   border-radius: 4px;
   padding: 1.5rem;
   padding-bottom: 4.5rem;
   cursor: pointer;
+  text-decoration: none;
 
   &__img-wrapper {
     position: relative;

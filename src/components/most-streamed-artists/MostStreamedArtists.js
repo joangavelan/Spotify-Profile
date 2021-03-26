@@ -7,7 +7,8 @@ const MostStreamedArtists = ({artists}) => {
     <div className="re-grid-row">
       {artists && artists.map(artist => (
         <Card
-          key={artist.id}  
+          key={artist.id}
+          itemUrl={artist.external_urls.spotify}  
           imgUrl={artist?.images?.[0]?.url}
           name={artist.name} 
           description={artist.type}

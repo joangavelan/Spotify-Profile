@@ -3,9 +3,12 @@ import './Card.scss'
 import { RiPlayMiniFill } from 'react-icons/ri'
 import { FiMusic } from 'react-icons/fi'
 
-const Card = ({imgUrl, name, description, radius}) => {
+const Card = ({itemUrl, imgUrl, name, description, radius}) => {
   return (
-    <div className="card">
+    <a className="card" 
+       href={itemUrl}
+       target="_blank"
+       rel="noreferrer">
       <div 
         className="card__img-wrapper" 
         style={!imgUrl ? {backgroundColor: '#333'} : null}>
@@ -21,7 +24,7 @@ const Card = ({imgUrl, name, description, radius}) => {
         <h3>{name}</h3>
         {description && <p>{description}</p>}
       </div>
-    </div>
+    </a>
   )
 }
 
