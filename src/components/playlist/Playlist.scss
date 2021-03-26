@@ -114,15 +114,17 @@
   }
   
   & .delete-icon {
+    box-sizing: content-box;
     opacity: 0;
     position: absolute;
     right: 4.7rem;
-    bottom: 2.15rem;
+    bottom: 1.15rem;
     font-size: 1.5rem;
     cursor: pointer;
+    padding: 1rem;
   }
 
-  &__playerLink {
+  &__player {
     display: inline-block;
     font-size: 1.6rem;
     padding: 1rem 2rem;

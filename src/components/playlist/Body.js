@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react'
 import Columns from './Columns'
 import PlaylistTracks from './PlaylistTracks'
+import Player from './Player'
 import '../../sass/_layout.scss'
 import Recommendations from '../recommendations/Recommendations'
 import Warning from '../warning/Warning'
@@ -11,16 +12,12 @@ const Body = ({ playlist }) => {
 
   const [{ selected_track }, dispatch] = useGlobalState();
 
-  const handleAnchorTag = (e) => {
-    if(!selected_track.url) e.preventDefault();
-  }
-
   let playlistTracksRef = useRef(null);
   let recommendedTracksRef = useRef(null);
 
   useEffect(() => {
     function handleClickOutside(event) {
-      if((playlistTracksRef.current && recommendedTracksRef.current && !playlistTracksRef.current.contains(event.target) && !recommendedTracksRef.current.contains(event.target) && !event.target.matches('.playlist__playerLink')) || event.target.matches('.delete-icon') || event.target.matches('.playlist__track-add')) {
+      if((playlistTracksRef.current && recommendedTracksRef.current && !playlistTracksRef.current.contains(event.target) && !recommendedTracksRef.current.contains(event.target) && !event.target.matches('.playlist__player')) || event.target.matches('.delete-icon') || event.target.matches('.playlist__track-add')) {
         dispatch({type: ACTIONS.SET_UNSELECT_TRACK});
       }
       }
@@ -35,19 +32,16 @@ const Body = ({ playlist }) => {
       <div className="playlist__body-cover"/>
       {playlist.tracks.items.length > 0 ?
       <>
-        <a className="playlist__playerLink" 
-           onClick={handleAnchorTag}
-           style={{backgroundColor: selected_track.url ? '#1DB954' : '#00a73b'}}
-           href={selected_track.url} 
-           target="_blank"
-           rel="noreferrer">
-            Play on spotify
-        </a>
+        <Player url={selected_track.url}/>
         <div className="playlist__tracks">
           <Columns />
-          <PlaylistTracks playlist={playlist} playlistTracksRef={playlistTracksRef}/>
+          <PlaylistTracks 
+            playlist={playlist} 
+            playlistTracksRef={playlistTracksRef}/>
         </div>
-        <Recommendations playlist={playlist} recommendedTracksRef={recommendedTracksRef}/>
+        <Recommendations 
+          playlist={playlist} 
+          recommendedTracksRef={recommendedTracksRef}/>
       </>
       : <Warning />}
     </div>
