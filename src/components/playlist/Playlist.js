@@ -29,9 +29,8 @@ const Playlist = () => {
   }, [playlistId, update])
 
   const fetchPlaylist = async (id) => {
-    const playlistFetch = await spotifyApi.getPlaylist(id);
-    console.log(playlistFetch);
-    setPlaylist(playlistFetch);
+    const playlist = await spotifyApi.getPlaylist(id);
+    setPlaylist(playlist);
   }
 
   return (
