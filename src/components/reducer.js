@@ -8,7 +8,6 @@ export const ACTIONS = {
   SET_SELECTED_TRACK_FIELD: 'set-selected-track-field',
   SET_SELECTED_TRACK_INDEX: 'set-selected-track-index',
   SET_UNSELECT_TRACK: 'set-unselect-track',
-  SET_TOP_TRACKS: 'set-top-tracks'
 }
 
 export const initialState = {
@@ -20,8 +19,7 @@ export const initialState = {
     url: '',
     field: '',
     index: null
-  },
-  topTracks: []
+  }
 }
 
 const reducer = (state, action) => {
@@ -70,11 +68,6 @@ const reducer = (state, action) => {
       return {
         ...state,
         selected_track: {url: '', field: '', index: null}
-      }
-    case ACTIONS.SET_TOP_TRACKS:
-      return { 
-        ...state,
-        topTracks: action.topTracks
       }
     default: 
       return state;
