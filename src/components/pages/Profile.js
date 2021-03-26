@@ -6,7 +6,7 @@ import User from '../user/User'
 import SubHeading from '../sub-heading/SubHeading'
 import { spotifyApi } from '../spotify'
 import MostStreamedArtists from '../most-streamed-artists/MostStreamedArtists'
-import TopTracks from '../top-tracks/TopTracks'
+import Tracks from '../track/four-col/Tracks'
 import PublicPlaylists from '../public-playlists/PublicPlaylists'
 import Loader from '../loader/Loader'
 
@@ -51,7 +51,7 @@ const Profile = () => {
             <SubHeading 
               title="Most streamed tracks this month"
               description="Only visible to you"/>
-            <TopTracks topTracks={topTracks}/>
+            <Tracks tracks={topTracks}/>
           </div>
           <div className="row">
             <SubHeading title="Public Playlists"/>

@@ -37,6 +37,10 @@
 
 .col-4 {
   grid-template-columns: .03fr 1.3fr .8fr.17fr;
+
+  & > div:first-child {
+    overflow: visible;
+  }
 }
 
 //responsive row

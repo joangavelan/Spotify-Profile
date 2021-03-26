@@ -1,11 +1,11 @@
 import React from 'react'
-import Duration from '../track/Duration'
-import Name from '../track/Name'
-import Numeration from '../track/Numeration'
-import Title from '../track/Title'
-import '../track/Tracks.scss'
-import { handleTrackClick } from '../../utilities'
-import { useGlobalState } from '../Provider'
+import Duration from '../Duration'
+import Name from '../Name'
+import Numeration from '../Numeration'
+import Title from '../Title'
+import '../Tracks.scss'
+import { handleTrackClick } from '../../../utilities'
+import { useGlobalState } from '../../Provider'
 
 const Track = ({track, index}) => {
 
