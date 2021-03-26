@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom'
 import Playlist from '../playlist/Playlist'
 import Profile from '../pages/Profile'
 import TopTracks from '../pages/TopTracks'
+import TopArtists from '../pages/TopArtists'
 
 const Main = () => {
   return (
@@ -11,7 +12,7 @@ const Main = () => {
       <Switch>
         <Route path="/" component={Profile} exact/>
         <Route path="/tracks" component={TopTracks}/>
-        {/* <Route path="/top-artists" component={Profile}/> */}
+        <Route path="/artists" component={TopArtists}/>
         {/* <Route path="/recent" component={Profile}/> */}
         <Route path="/:playlist" component={Playlist}/>
       </Switch>

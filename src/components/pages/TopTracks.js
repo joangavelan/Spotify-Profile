@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Heading from '../heading/Heading'
 import Tracks from '../top-tracks/TopTracks'
-import './TopTracks.scss'
 import Loader from '../loader/Loader'
 import { spotifyApi } from '../spotify'
  
@@ -18,7 +17,7 @@ const TopTracks = () => {
     <>
       {topTracks 
         ? 
-          <div className="topTracks">
+          <div className="container">
             <Heading title="Top Tracks"/>
             <Tracks topTracks={topTracks}/>
           </div>
