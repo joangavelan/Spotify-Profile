@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef} from 'react'
+import React, { useRef } from 'react'
 import Track from './TopTrack'
 import { useOutsideHandler } from '../../utilities'
 import { useGlobalState } from '../Provider'
