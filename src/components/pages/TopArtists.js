@@ -17,7 +17,7 @@ const TopArtists = () => {
       {topArtists 
       ? <div className="container">
           <h1 style={{marginBottom: '3rem', textAlign: 'center'}}>Top Artists</h1>
-          <div className="re-grid-row overflow">
+          <div className="re-grid-row auto">
             {topArtists.map(artist => (
               <Card
                 key={artist.id}

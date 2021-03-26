@@ -53,8 +53,9 @@
   overflow-y: hidden;
 }
 
-.re-grid-row.overflow {
+.re-grid-row.auto {
   overflow-y: visible;
+  grid-auto-rows: auto;
 }
 
 //spacer
