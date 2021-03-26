@@ -14,7 +14,7 @@ const SidePlaylists = () => {
         {playlists?.items?.map(playlist => (
           <li key={playlist.id}>
             <NavLink 
-              to={{pathname: `/${playlist.name}`, playlist_id: playlist.id}}
+              to={{pathname: playlist.name, playlist_id: playlist.id}}
               activeStyle={{ color: 'white' }}>
               {playlist.name}
             </NavLink>
