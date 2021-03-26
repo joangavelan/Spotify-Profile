@@ -10,13 +10,11 @@ const Recommendations = ({ playlist, recommendedTracksRef}) => {
   const [tracks, setTracks] = useState([]);
   const [{}, dispatch] = useGlobalState();
 
-  const playlistTrackItems = playlist.tracks.items;
-
   const fetchRecommendations = async (limit) => {
     const seeds = {
-      seed_tracks: playlistTrackItems[0].track.id,
+      seed_tracks: playlist.tracks.items[0].track.id,
       seed_genres: playlist.name,
-      seed_artists: playlistTrackItems[0].track.artists[0].id,
+      seed_artists: playlist.tracks.items[0].track.artists[0].id,
       limit
     }
     const recommendations = await spotifyApi.getRecommendations(seeds);
