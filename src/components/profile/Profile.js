@@ -8,6 +8,7 @@ import { spotifyApi } from '../spotify'
 import MostStreamedArtists from '../most-streamed-artists/MostStreamedArtists'
 import TopTracks from '../top-tracks/TopTracks'
 import PublicPlaylists from '../public-playlists/PublicPlaylists'
+import Loader from '../loader/Loader'
 
 const Profile = () => {
 
@@ -32,30 +33,35 @@ const Profile = () => {
   }, [])
 
   return (
-    <div className="Profile">
-      <Header>
-        <User user={user}/>
-      </Header>
-      <Body>
-        <div className="spacer-2"></div>
-        <div className="row">
-          <SubHeading
-            title="Most streamed artists this month"
-            description="Only visible to you"/>
-          <MostStreamedArtists artists={topArtists}/>
-        </div>
-        <div className="row">
-          <SubHeading 
-            title="Most streamed tracks this month"
-            description="Only visible to you"/>
-          <TopTracks limit={4}/>
-        </div>
-        <div className="row">
-          <SubHeading title="Public Playlists"/>
-          <PublicPlaylists playlists={publicPlaylists}/>
-        </div>
-      </Body>
-    </div>
+    <>
+      {user && topArtists.length > 0 && publicPlaylists.length > 0 ?
+        <div className="Profile">
+        <Header>
+          <User user={user}/>
+        </Header>
+        <Body>
+          <div className="spacer-2"></div>
+          <div className="row">
+            <SubHeading
+              title="Most streamed artists this month"
+              description="Only visible to you"/>
+            <MostStreamedArtists artists={topArtists}/>
+          </div>
+          <div className="row">
+            <SubHeading 
+              title="Most streamed tracks this month"
+              description="Only visible to you"/>
+            <TopTracks limit={4}/>
+          </div>
+          <div className="row">
+            <SubHeading title="Public Playlists"/>
+            <PublicPlaylists playlists={publicPlaylists}/>
+          </div>
+        </Body>
+      </div>
+
+      : <Loader />}
+    </> 
   )
 }
 
