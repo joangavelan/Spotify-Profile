@@ -9,7 +9,7 @@ const Recent = () => {
   const [recentlyPlayedTracks, setRecentlyPlayedTracks] = useState('');
 
   useEffect(() => {
-    spotifyApi.getMyRecentlyPlayedTracks({limit: 40})
+    spotifyApi.getMyRecentlyPlayedTracks({limit: 50})
      .then(data => setRecentlyPlayedTracks(data));
   }, [])
 

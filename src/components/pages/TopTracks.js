@@ -9,7 +9,7 @@ const TopTracks = () => {
   const [topTracks, setTopTracks] = useState('');
 
   useEffect(() => {
-    spotifyApi.getMyTopTracks({limit: 40})
+    spotifyApi.getMyTopTracks({limit: 50})
      .then(topTracks => setTopTracks(topTracks.items));
   }, [])
 
