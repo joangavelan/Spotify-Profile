@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { spotifyApi } from '../spotify'
 import SubHeading from '../sub-heading/SubHeading'
 import { useGlobalState } from '../Provider'
@@ -10,7 +10,7 @@ const Recommendations = ({ playlist, recommendedTracksRef}) => {
   const [tracks, setTracks] = useState([]);
   const [{}, dispatch] = useGlobalState();
 
-  const fetchRecommendations = async (limit) => {
+  const fetchRecommendations = useCallback(async (limit) => {
     const seeds = {
       seed_tracks: playlist.tracks.items[0].track.id,
       seed_genres: playlist.name,
@@ -20,14 +20,14 @@ const Recommendations = ({ playlist, recommendedTracksRef}) => {
     const recommendations = await spotifyApi.getRecommendations(seeds);
     const tracks = recommendations.tracks;
     return tracks;
-  }
+  }, [playlist]);
 
-  useEffect( () => {
+  useEffect(() => {
     fetchRecommendations(10)
       .then(tracks => {
         setTracks(tracks);
       });
-  }, [])
+  }, [fetchRecommendations])
 
   const addTrackToPlaylist = (uri) => {
     const uris = [uri];
