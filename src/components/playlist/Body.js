@@ -17,7 +17,7 @@ const Body = ({ playlist }) => {
 
   useEffect(() => {
     function handleClickOutside(event) {
-      if((playlistTracksRef.current && recommendedTracksRef.current && !playlistTracksRef.current.contains(event.target) && !recommendedTracksRef.current.contains(event.target) && !event.target.matches('.playlist__player')) || event.target.matches('.delete-icon') || event.target.matches('.playlist__track-add')) {
+      if((playlistTracksRef.current && recommendedTracksRef.current && !playlistTracksRef.current.contains(event.target) && !recommendedTracksRef.current.contains(event.target) && !event.target.matches('.play-button')) || event.target.matches('.delete-icon') || event.target.matches('.playlist__track-add')) {
         dispatch({type: ACTIONS.SET_UNSELECT_TRACK});
       }
       }
