@@ -16,7 +16,8 @@ const Track = ({item, index, playlistId}) => {
   const removeTrackFromPlaylist = (uri) => {
     const uris = [uri];
     spotifyApi.removeTracksFromPlaylist(playlistId, uris);
-    dispatch({type: ACTIONS.SET_UPDATE})
+    dispatch({type: ACTIONS.SET_UPDATE});
+    dispatch({type: ACTIONS.SET_UNSELECT_TRACK});
   }
 
   const selectedClass = selected_track.field === 'playlist' && selected_track.index === index ? 'selected' : '';

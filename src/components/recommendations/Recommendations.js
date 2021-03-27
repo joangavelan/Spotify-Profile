@@ -27,12 +27,13 @@ const Recommendations = ({ playlist, recommendedTracksRef}) => {
       .then(tracks => {
         setTracks(tracks);
       });
-  }, [fetchRecommendations])
+  }, [])
 
   const addTrackToPlaylist = (uri) => {
     const uris = [uri];
     spotifyApi.addTracksToPlaylist(playlist.id, uris);
     dispatch({type: ACTIONS.SET_UPDATE});
+    dispatch({type: ACTIONS.SET_UNSELECT_TRACK});
   }
 
   const removeAddedTrack = (id) => {
