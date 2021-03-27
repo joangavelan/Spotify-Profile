@@ -83,7 +83,7 @@ export function getTimeDifference(added_date) {
 }
 
 export function handleTrackClick(event, {preventClass, dispatch, url, index, field}) {
-  if(event.target && event.target.matches(preventClass)) return;
+  if(event.target.matches(preventClass) || event.target.parentNode.matches(preventClass)) return;
   dispatch({type: ACTIONS.SET_SELECTED_TRACK_URL, url});
   dispatch({type: ACTIONS.SET_SELECTED_TRACK_INDEX, index});
   dispatch({type: ACTIONS.SET_SELECTED_TRACK_FIELD, field});
