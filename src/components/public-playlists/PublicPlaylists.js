@@ -8,7 +8,7 @@ const PublicPlaylists = ({playlists}) => {
       {playlists.map(playlist => (
         <Card
           key={playlist.id} 
-          to={{pathname: playlist.name, playlist_id: playlist.id}}
+          to={{pathname: (`/${playlist.name}`), playlist_id: playlist.id}}
           imgUrl={playlist?.images?.[0]?.url}
           name={playlist.name}/>
       ))}
