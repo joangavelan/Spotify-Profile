@@ -100,7 +100,7 @@ export function useOutsideHandler(ref, dispatch, optionalTarget) {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [ref, dispatch]);
+  }, [ref, dispatch, optionalTarget]);
 }
 
 export function getSelectedClass(trackField, trackIndex, field, index) {
