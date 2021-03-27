@@ -1,4 +1,5 @@
 import React from 'react'
+import './PlayButton.scss'
 
 const Player = ({url}) => {
 
@@ -8,7 +9,7 @@ const Player = ({url}) => {
 
   return (
     <>
-      <a className="playlist__player" 
+      <a className="play-button" 
          onClick={handleAnchorTag}
          style={{backgroundColor: url ? '#1DB954' : '#00a73b'}}
          href={url} 

@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react'
 import Columns from './Columns'
 import PlaylistTracks from './PlaylistTracks'
-import Player from './Player'
+import PlayButton from '../player-button/PlayButton'
 import '../../sass/_layout.scss'
 import Recommendations from '../recommendations/Recommendations'
 import Warning from '../warning/Warning'
@@ -32,7 +32,7 @@ const Body = ({ playlist }) => {
       <div className="playlist__body-cover"/>
       {playlist.tracks.items.length > 0 ?
       <>
-        <Player url={selected_track.url}/>
+        <PlayButton url={selected_track.url}/>
         <div className="playlist__tracks">
           <Columns />
           <PlaylistTracks 

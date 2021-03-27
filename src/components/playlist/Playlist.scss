@@ -123,17 +123,6 @@
     cursor: pointer;
     padding: 1rem;
   }
-
-  &__player {
-    display: inline-block;
-    font-size: 1.6rem;
-    padding: 1rem 2rem;
-    border-radius: 3rem;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: white;
-    // background-color: $color-primary-dark;
-  }
 }
 
 .playlist::-webkit-scrollbar {
