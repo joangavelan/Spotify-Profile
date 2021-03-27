@@ -9,19 +9,20 @@
   text-align: center;
 
   & img {
-    width: 20rem;
+    display: block;
+    width: 23rem;
   }
 
   & a {
-    display: block;
+    display: inline-block;
     padding: 1.3rem 2rem;
     font-size: 1.3rem;
     font-weight: 600;
     background-color: $color-primary-dark;
-    letter-spacing: 1.5px;
+    letter-spacing: 1px;
     color: white;
     text-decoration: none;
     border-radius: 50rem;
-    margin: 4rem 0;
+    margin: 5rem 0;
   }
 }
