@@ -28,7 +28,7 @@ const Artist = () => {
   return (
     <>
       {artist
-        ? <div className="artist container-md">
+        ? <div className="artist">
             <div className="artist__header">
               <h1 className="artist__name">{artist.name}</h1>
               <img 
