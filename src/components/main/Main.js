@@ -6,6 +6,7 @@ import Profile from '../pages/Profile'
 import TopTracks from '../pages/TopTracks'
 import TopArtists from '../pages/TopArtists'
 import Recent from '../pages/Recent'
+import Artist from '../pages/Artist'
 
 const Main = () => {
   return (
@@ -13,7 +14,8 @@ const Main = () => {
       <Switch>
         <Route path="/" component={Profile} exact/>
         <Route path="/tracks" component={TopTracks}/>
-        <Route path="/artists" component={TopArtists}/>
+        <Route path="/artists" component={TopArtists} exact/>
+        <Route path="/artists/:name" component={Artist}/>
         <Route path="/recent" component={Recent}/>
         <Route path="/:playlist" component={Playlist}/>
       </Switch>

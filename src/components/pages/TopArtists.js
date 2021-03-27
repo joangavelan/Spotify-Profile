@@ -21,7 +21,7 @@ const TopArtists = () => {
             {topArtists.map(artist => (
               <Card
                 key={artist.id}
-                itemUrl={artist.external_urls.spotify}  
+                to={{pathname: (`artists/${artist.name}`), artist_id: artist.id}} 
                 imgUrl={artist?.images?.[0]?.url}
                 name={artist.name} 
                 description={artist.type}
