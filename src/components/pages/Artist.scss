@@ -1,0 +1,45 @@
+@import '../../sass/variables';
+
+.artist {
+  width: 60rem;
+  position: absolute;
+  top: 7%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+
+  &__name {
+    font-size: 7rem;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+  }
+
+  &__thumbnail {
+    max-width: 37rem;
+    border-radius: 50%;
+    margin-bottom: 2rem;
+  }
+
+  &__stats {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 4rem;
+
+    & > div {
+      flex: 0.33;
+      margin: 1.5rem;
+
+      & > h3 {
+        font-size: 2rem;
+        color: $color-gray-light;
+        margin-bottom: 1rem;
+      }
+
+      & > p {
+        font-size: 2.1rem;
+        color: $color-gray-light;
+      }
+    }
+  }
+}
