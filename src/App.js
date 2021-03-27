@@ -8,6 +8,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { spotifyApi } from './components/spotify'
 
 
+
 function App() {
 
   const [{token}, dispatch] = useGlobalState();
@@ -16,7 +17,8 @@ function App() {
     const fullToken = getTokenFromUrl();
     const _token = fullToken.access_token;
     //clean url
-    // window.location.hash = "";
+    window.history.pushState("", document.title, window.location.pathname + window.location.search);
+    //set required data
     if(_token) {
       //set token
       dispatch({type: ACTIONS.SET_TOKEN, token: _token})
