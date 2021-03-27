@@ -1,10 +1,10 @@
-import { useCallback } from 'react'
+import { useMemo } from 'react'
 import { getArtists } from '../../utilities'
 import { RiPlayMiniFill } from 'react-icons/ri'
 
 const Title = ({albumImageUrl, trackName, trackArtists, icon, filter}) => {
 
-  const artists = useCallback(getArtists(trackArtists), []);
+  const artists = useMemo(() => getArtists(trackArtists), [trackArtists]);
 
   return (
     <div className="track-title-wrapper">
