@@ -4,8 +4,8 @@ export const spotifyApi = new SpotifyWebApi();
 
 export const authEndpoint = 'https://accounts.spotify.com/authorize';
 const clientId = 'b6b78b630f544b5d836af9fc72d81c88';
-// const redirectUri = 'https://spotify-profile-jg.netlify.app/';
-const redirectUri = 'http://localhost:3000/';
+const redirectUri = 'https://spotify-profile-jg.netlify.app/';
+// const redirectUri = 'http://localhost:3000/';
 const scopes = [
   'user-read-currently-playing',
   'user-read-recently-played',
