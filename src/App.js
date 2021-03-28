@@ -4,14 +4,13 @@ import { getTokenFromUrl } from './components/spotify'
 import { useGlobalState } from './components/Provider'
 import { ACTIONS } from './components/reducer'
 import SpotifyProfile from './components/spotify-profile/SpotifyProfile'
-import { BrowserRouter as Router } from "react-router-dom";
 import { spotifyApi } from './components/spotify'
-
-
 
 function App() {
 
   const [{token}, dispatch] = useGlobalState();
+
+  console.log(token)
 
   useEffect(() => {
     const fullToken = getTokenFromUrl();
@@ -33,12 +32,9 @@ function App() {
   }, [dispatch])
 
   return (
-    <Router>
       <div className="App">
         {token ? <SpotifyProfile /> : <Login />}
-      </div>
-    </Router>
-    
+      </div>    
   );
 }
 
