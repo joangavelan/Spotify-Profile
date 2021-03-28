@@ -9,6 +9,7 @@ import MostStreamedArtists from '../most-streamed-artists/MostStreamedArtists'
 import Tracks from '../track/four-col/Tracks'
 import PublicPlaylists from '../public-playlists/PublicPlaylists'
 import Loader from '../loader/Loader'
+import Warning from '../warning/Warning'
 
 const Profile = () => {
 
@@ -36,29 +37,36 @@ const Profile = () => {
     <>
       {user && topArtists && publicPlaylists && topTracks ?
         <div className="Profile">
-        <Header>
-          <User user={user}/>
-        </Header>
-        <Body>
-          <div className="spacer-2"></div>
-          <div className="row">
-            <SubHeading
-              title="Most streamed artists this month"
-              description="Only visible to you"/>
-            <MostStreamedArtists artists={topArtists}/>
-          </div>
-          <div className="row">
-            <SubHeading 
-              title="Most streamed tracks this month"
-              description="Only visible to you"/>
-            <Tracks tracks={topTracks}/>
-          </div>
-          <div className="row">
-            <SubHeading title="Public Playlists"/>
-            <PublicPlaylists playlists={publicPlaylists}/>
-          </div>
-        </Body>
-      </div>
+          <Header>
+            <User user={user} playlistsLength={publicPlaylists.length}/>
+          </Header>
+          <Body>
+          {
+            topArtists.length > 0 &&
+            publicPlaylists.length > 0 &&
+            topTracks.length > 0 ?   
+            <>
+              <div className="row" style={{marginTop: '2rem'}}>
+                <SubHeading
+                  title="Most streamed artists this month"
+                  description="Only visible to you"/>
+                <MostStreamedArtists artists={topArtists}/>
+              </div>
+              <div className="row">
+                <SubHeading 
+                  title="Most streamed tracks this month"
+                  description="Only visible to you"/>
+                <Tracks tracks={topTracks}/>
+              </div>
+              <div className="row">
+                <SubHeading title="Public Playlists"/>
+                <PublicPlaylists playlists={publicPlaylists}/>
+              </div>
+            </>
+            : <Warning message="No data available"/>
+          }  
+          </Body>
+        </div>
 
       : <Loader />}
     </> 

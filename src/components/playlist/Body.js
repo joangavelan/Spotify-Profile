@@ -43,7 +43,9 @@ const Body = ({ playlist }) => {
           playlist={playlist} 
           recommendedTracksRef={recommendedTracksRef}/>
       </>
-      : <Warning />}
+      : <Warning 
+          message="You haven't added any tracks to this playlist yet"
+        />}
     </div>
   )
 }

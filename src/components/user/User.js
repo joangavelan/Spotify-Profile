@@ -1,16 +1,25 @@
 import React from 'react'
+import { AiOutlineUser } from 'react-icons/ai';
 import './User.scss'
 
-const User = ({user}) => {
+const User = ({user, playlistsLength}) => {
+
+  const url = user?.images?.[0]?.url;
+  const name = user.display_name;
+
   return (
     <div className="user">
         <div className="img-wrapper">
-          <img src={user?.images?.[0]?.url} alt={user.display_name}/>
+          {url 
+            ? <img src={url} alt={name}/>
+            : <AiOutlineUser />}
         </div>
         <div className="user-content">
           <h3>Profile</h3>
-          <h2>{user.display_name}</h2>
-          <p>8 playlist públicas</p>
+          <h2>{name}</h2>
+          {playlistsLength > 0 && 
+            <p>{playlistsLength} public playlists</p>
+          }
         </div>
     </div>
   )

@@ -3,6 +3,7 @@ import Heading from '../heading/Heading'
 import Tracks from '../track/four-col/Tracks'
 import Loader from '../loader/Loader'
 import { spotifyApi } from '../spotify'
+import Warning from '../warning/Warning'
  
 const TopTracks = () => {
 
@@ -10,18 +11,20 @@ const TopTracks = () => {
 
   useEffect(() => {
     spotifyApi.getMyTopTracks({limit: 50})
-     .then(topTracks => setTopTracks(topTracks.items));
+     .then(topTracks => setTopTracks(topTracks));
   }, [])
 
   return (
     <>
-      {topTracks 
-        ? 
-          <div className="container">
+      {topTracks ? 
+        topTracks?.items.length > 0 
+        ? <div className="container">
             <Heading title="Top Tracks"/>
-            <Tracks tracks={topTracks}/>
+            <Tracks tracks={topTracks.items}/>
           </div>
-        : <Loader />     
+        : <Warning message="No tracks listened"/>     
+
+      : <Loader />
       }
     </>
   )

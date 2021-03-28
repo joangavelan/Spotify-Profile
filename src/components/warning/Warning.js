@@ -2,10 +2,10 @@ import React from 'react'
 import { AiOutlineCloseCircle } from 'react-icons/ai'
 import './Warning.scss'
 
-const Warning = () => {
+const Warning = ({message}) => {
   return (
     <div className="warning">
-      <p>You haven't added any tracks to this playlist yet</p>
+      <p>{message}</p>
       <AiOutlineCloseCircle />
     </div>
   )

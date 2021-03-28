@@ -3,6 +3,7 @@ import Heading from '../heading/Heading'
 import Tracks from '../track/four-col/Tracks'
 import Loader from '../loader/Loader'
 import { spotifyApi } from '../spotify'
+import Warning from '../warning/Warning'
 
 const Recent = () => {
 
@@ -21,14 +22,15 @@ const Recent = () => {
 
   return (
     <>
-      {tracks.length > 0
-        ? 
-          <div className="container">
-            <Heading title="Recently Played Tracks"/>
-            <Tracks tracks={tracks}/>
-          </div>
-        : <Loader />    
-       }
+      {recentlyPlayedTracks ? 
+          tracks.length > 0 ? 
+              <div className="container">
+                <Heading title="Recently Played Tracks"/>
+                <Tracks tracks={tracks}/>
+              </div>
+            : <Warning message="No tracks listened"/>    
+        : <Loader />
+      }
     </>
   )
 }
