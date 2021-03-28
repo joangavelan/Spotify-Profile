@@ -9,9 +9,7 @@ import { spotifyApi } from './components/spotify'
 function App() {
 
   const [{token}, dispatch] = useGlobalState();
-
-  console.log(token)
-
+  
   useEffect(() => {
     const fullToken = getTokenFromUrl();
     const _token = fullToken.access_token;
