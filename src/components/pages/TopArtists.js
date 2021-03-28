@@ -31,7 +31,7 @@ const TopArtists = () => {
                 ))}
               </div>
             </div> 
-          : <Warning message="You haven't listen to any artist yet"/>
+          : <Warning message="You haven't listened to any artist yet"/>
       : <Loader />}
     </>
   )
