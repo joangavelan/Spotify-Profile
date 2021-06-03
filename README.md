@@ -1,6 +1,6 @@
 # Spotify Profile
 
-> A web app you can use to navigate through your playlists and favorite artists from Spotify.
+> A web app you can use to navigate through your favorite artists and playlists from Spotify.
 
 Technologies and services used in the development process:
 
