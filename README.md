@@ -8,4 +8,4 @@ Technologies and services used in the development process:
 - [Create React App](https://github.com/facebook/create-react-app)
 - [React Router](https://reactrouter.com/)
 
-<a href="https://spotify-profile-jg.netlify.app/"><img src="https://i.ibb.co/s9KZJ7G/spotify-profile.png" alt="spotify-profile" border="0"></a>
+<a href="https://spotify-profile-jg.netlify.app/"><img src="https://nimbusweb.me/box/attachment/5914078/ylslwzlvxhargvew76eq/d8ZVXSVx8ws76DPd/screenshot-spotify-profile-jg.netlify.app-2021.08.12-22_34_21.png" alt="spotify-profile" border="0"></a>
