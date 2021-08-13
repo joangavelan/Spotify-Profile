@@ -1,6 +1,6 @@
 # Spotify Profile
 
-> A web app you can use to navigate through your favorite artists and playlists from Spotify.
+> A web app that you can use to navigate through your favorite artists and playlists from Spotify.
 
 Technologies and services used in the development process:
 
@@ -9,4 +9,6 @@ Technologies and services used in the development process:
 - [React Router](https://reactrouter.com/)
 - [SASS](https://sass-lang.com/)
 
-<a href="https://spotify-profile-jg.netlify.app/"><img src="https://nimbusweb.me/box/attachment/5914086/4tr90sh15ogdfrsp5e7d/zrW5bEuOXqb1rsBu/screenshot-spotify-profile-jg.netlify.app-2021.08.12-22_36_41.png" alt="spotify-profile" border="0"></a>
+<a href="https://spotify-profile-jg.netlify.app/">
+  <img src="https://nimbusweb.me/box/attachment/5914086/4tr90sh15ogdfrsp5e7d/zrW5bEuOXqb1rsBu/screenshot-spotify-profile-jg.netlify.app-2021.08.12-22_36_41.png"       alt="spotify-profile" border="0">
+</a>
